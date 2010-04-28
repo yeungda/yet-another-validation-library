@@ -114,14 +114,14 @@ public class ValidatorUnitTest {
             public boolean matchesSafely(ValidationError validationError) {
                 final HashMap<String, String> map = new HashMap<String, String>();
                 validationError.describeTo(map);
-                return fieldName.equals(map.get("fieldName")) && message.equals(map.get("message"));
+                return fieldName.equals(map.get("fieldName")) && message.equals(map.get("description"));
             }
 
             @Override
             public void describeTo(Description description) {
                 description.appendText("Field Name ");
                 description.appendValue(fieldName);
-                description.appendText(" with Message");
+                description.appendText(" with description ");
                 description.appendValue(message);
             }
         };

@@ -8,7 +8,7 @@ public class ValidationError {
 
     public void describeTo(Map<String, String> report) {
         report.put("fieldName", fieldName);
-        report.put("message", description);
+        report.put("description", description);
     }
 
     public void setFieldName(String fieldName) {
