@@ -1,4 +1,7 @@
-package validation;
+package validation.core;
+
+import org.hamcrest.Matcher;
+import org.hamcrest.StringDescription;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -8,19 +11,21 @@ public class Validator {
     private final Collection<ValidationError> validationErrors = new ArrayList<ValidationError>(10);
     private final Collection<ErrorId> alreadyValidated = new ArrayList<ErrorId>(10);
 
-    public void validateThat(Field field, ValidationMatcher validationMatcher) {
+    public void validateThat(Field field, Matcher<? extends String> matcher) {
         final ErrorId errorId = new ErrorId();
         field.describeTo(errorId);
-        if (hasNoRecordedErrorFor(errorId) && field.matches(validationMatcher)) {
+        if (hasNoRecordedErrorFor(errorId) && !field.matches(matcher)) {
             alreadyValidated.add(errorId);
-            validationErrors.add(createValidationError(field, validationMatcher));
+            validationErrors.add(createValidationError(field, matcher));
         }
     }
 
-    private ValidationError createValidationError(Field field, ValidationMatcher validationMatcher) {
+    private ValidationError createValidationError(Field field, Matcher<? extends String> matcher) {
         final ValidationError validationError = new ValidationError();
         field.describeTo(validationError);
-        validationMatcher.describeTo(validationError);
+        final StringDescription stringDescription = new StringDescription();
+        matcher.describeTo(stringDescription);
+        validationError.setDescription(stringDescription.toString());
         return validationError;
     }
 
@@ -33,5 +38,4 @@ public class Validator {
             validationErrors.add(error);
         }
     }
-
 }

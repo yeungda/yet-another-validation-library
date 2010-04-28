@@ -1,4 +1,4 @@
-package validation;
+package validation.core;
 
 public class ErrorId {
 

@@ -1,6 +1,5 @@
-package validation;
+package validation.core;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class ValidationError {
@@ -16,7 +15,7 @@ public class ValidationError {
         this.fieldName = fieldName;
     }
 
-    public void setMessage(String message) {
+    public void setDescription(String message) {
         this.message = message;
     }
 

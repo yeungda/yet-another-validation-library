@@ -1,9 +1,12 @@
-package validation;
+package validation.core;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.junit.Test;
 import org.junit.internal.matchers.TypeSafeMatcher;
+import validation.core.Field;
+import validation.core.ValidationError;
+import validation.core.Validator;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -21,10 +24,9 @@ public class ValidatorUnitTest {
 
     @Test
     public void shouldValidateNoFields() {
-        final Validator validator = new Validator();
-        assertThat(reportOf(validator), hasSize(0));
+        assertThat(reportOf(new Validator()), hasSize(0));
     }
-    
+
     @Test
     public void shouldValidateASingleField() {
         assertThat(validating(FIELD, isNeverGoodEnough()), hasErrorMessageForField("field", "never good enough"));
@@ -51,45 +53,45 @@ public class ValidatorUnitTest {
         );
     }
 
-    private ValidationMatcher isNeverGoodEnoughForOtherReasons() {
+    private Matcher<? extends String> isNeverGoodEnoughForOtherReasons() {
         return isNeverGoodEnoughBecause("other reasons");
     }
 
-    private ValidationMatcher isNeverGoodEnoughBecause(final String message) {
-        return new ValidationMatcher() {
+    private Matcher<? extends String> isAlwaysPerfect() {
+        return new TypeSafeMatcher<String>() {
             @Override
-            public void describeTo(ValidationError validationError) {
-                validationError.setMessage(message);
-            }
-
-            @Override
-            public boolean passes(String value) {
+            public boolean matchesSafely(String s) {
                 return true;
             }
-        };
-    }
-
-    private ValidationMatcher isAlwaysPerfect() {
-        return new ValidationMatcher() {
-            @Override
-            public void describeTo(ValidationError validationError) {
-                validationError.setMessage("should never happen");
-            }
 
             @Override
-            public boolean passes(String value) {
-                return false;
+            public void describeTo(Description description) {
+                description.appendText("should never happen");
             }
         };
     }
 
-    private ValidationMatcher isNeverGoodEnough() {
+    private Matcher<? extends String> isNeverGoodEnough() {
         return isNeverGoodEnoughBecause("never good enough");
     }
 
-    private Collection<ValidationError> validating(Field field, ValidationMatcher... matchers) {
+    private TypeSafeMatcher<String> isNeverGoodEnoughBecause(final String reason) {
+        return new TypeSafeMatcher<String>() {
+            @Override
+            public boolean matchesSafely(String s) {
+                return false;
+            }
+
+            @Override
+            public void describeTo(Description description) {
+                description.appendText(reason);
+            }
+        };
+    }
+
+    private Collection<ValidationError> validating(Field field, Matcher<? extends String>... matchers) {
         Validator validator = new Validator();
-        for (ValidationMatcher matcher : matchers) {
+        for (Matcher<? extends String> matcher : matchers) {
             validator.validateThat(field, matcher);
         }
         return reportOf(validator);

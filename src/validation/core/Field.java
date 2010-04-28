@@ -1,4 +1,6 @@
-package validation;
+package validation.core;
+
+import org.hamcrest.Matcher;
 
 public class Field {
     private final String name;
@@ -9,15 +11,15 @@ public class Field {
         this.value = value;
     }
 
-    public boolean matches(ValidationMatcher validationMatcher) {
-        return validationMatcher.passes(value);
-    }
-
     public void describeTo(ValidationError validationError) {
         validationError.setFieldName(name);
     }
 
     public void describeTo(ErrorId errorId) {
         errorId.setFieldName(name);
+    }
+
+    public boolean matches(Matcher<? extends String> matcher) {
+        return matcher.matches(value);
     }
 }

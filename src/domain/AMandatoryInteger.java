@@ -1,12 +1,10 @@
 package domain;
 
-import validation.Field;
-import validation.ValidationError;
-import validation.ValidationMatcher;
-import validation.Validator;
+import validation.core.Field;
+import validation.core.Validator;
 
-import static domain.ValidationMatchers.*;
-import static domain.ValidationMatchers.*;
+import static validation.library.ValidationMatchers.*;
+import static org.hamcrest.Matchers.lessThan;
 
 public class AMandatoryInteger {
     private final Field field;
@@ -18,6 +16,6 @@ public class AMandatoryInteger {
     public void describeTo(Validator validator) {
         validator.validateThat(field, isMandatory());
         validator.validateThat(field, isAWholeNumber());
-        validator.validateThat(field, hasLessCharactersThan(30));
+        validator.validateThat(field, hasLength(lessThan(9)));
     }
 }
