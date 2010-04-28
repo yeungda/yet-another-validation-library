@@ -20,7 +20,7 @@ public class ModelMapErrorMessageWriter implements ErrorMessageWriter {
     @Override
     public void write(String fieldName, String description) {
         final LinkedHashMap<String, String> error = new LinkedHashMap<String, String>();
-        error.put(fieldName, (String)properties.get(fieldName + "." + description.replaceAll(" ", ".")));
+        error.put(fieldName, (String)properties.get(fieldName + ".failed." + description.replaceAll(" ", ".")));
         errorMessages.add(error);
     }
 

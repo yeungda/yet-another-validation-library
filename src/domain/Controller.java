@@ -1,21 +1,36 @@
 package domain;
 
-import validation.core.Field;
 import validation.core.Validator;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
 public class Controller {
-    public void validate() {
-        final AMandatoryInteger amount = new AMandatoryInteger(new Field("amount", "10"));
+    private final Properties properties;
+
+    public Controller() {
+        this.properties = new Properties();
+        try {
+            properties.load(getClass().getClassLoader().getResourceAsStream("domain/test.properties"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Map validate(AMandatoryInteger amount) {
         final Validator validator = new Validator();
+        final ModelMapErrorMessageWriter errorMessageWriter = new ModelMapErrorMessageWriter(properties);
+        final ArrayList<Map<String, String>> errorMessages = new ArrayList<Map<String, String>>();
+
         amount.describeTo(validator);
-        final ModelMapErrorMessageWriter writer = new ModelMapErrorMessageWriter(new Properties());
-        validator.describeErrors(writer);
-        final ArrayList<Map<String, String>> mapArrayList = new ArrayList<Map<String, String>>();
-        writer.describeTo(mapArrayList);
+        validator.describeErrorsTo(errorMessageWriter);
+        errorMessageWriter.describeTo(errorMessages);
+        final HashMap hashMap = new HashMap();
+        hashMap.put("errors", errorMessages);
+        return hashMap;
     }
 
 }

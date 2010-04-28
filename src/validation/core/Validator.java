@@ -40,7 +40,7 @@ public class Validator {
         }
     }
 
-    public void describeErrors(ErrorMessageWriter errorMessageWriter) {
+    public void describeErrorsTo(ErrorMessageWriter errorMessageWriter) {
         for (ValidationError validationError : this.validationErrors) {
             validationError.describeTo(errorMessageWriter);
         }

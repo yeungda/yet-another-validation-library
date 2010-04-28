@@ -14,10 +14,10 @@ public class ModelMapErrorMessageWriterUnitTest {
     @Test
     public void shouldWriteAnErrorMessageToTheModelMap() {
         final Properties properties = new Properties();
-        properties.put("error.is.mandatory", "Please enter a description");
+        properties.put("username.failed.is.mandatory", "Please enter your User Name");
         final ModelMapErrorMessageWriter messageWriter = new ModelMapErrorMessageWriter(properties);
-        messageWriter.write("error", "is.mandatory");
-        assertThat(describing(messageWriter).get(0), Matchers.hasEntry("error", "Please enter a description"));
+        messageWriter.write("username", "is.mandatory");
+        assertThat(describing(messageWriter).get(0), Matchers.hasEntry("username", "Please enter your User Name"));
     }
 
     private List<Map<String, String>> describing(ModelMapErrorMessageWriter messageWriter) {
