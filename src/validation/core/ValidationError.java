@@ -26,4 +26,8 @@ public class ValidationError {
                 ", description='" + description + '\'' +
                 '}';
     }
+
+    public void describeTo(ErrorMessageWriter errorMessageWriter) {
+        errorMessageWriter.write(fieldName, description);
+    }
 }

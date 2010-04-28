@@ -1,5 +1,6 @@
 package validation.core;
 
+import domain.Controller;
 import org.hamcrest.Matcher;
 import org.hamcrest.StringDescription;
 
@@ -36,6 +37,12 @@ public class Validator {
     public void describeErrors(List<ValidationError> validationErrors) {
         for (ValidationError error : this.validationErrors) {
             validationErrors.add(error);
+        }
+    }
+
+    public void describeErrors(ErrorMessageWriter errorMessageWriter) {
+        for (ValidationError validationError : this.validationErrors) {
+            validationError.describeTo(errorMessageWriter);
         }
     }
 }
