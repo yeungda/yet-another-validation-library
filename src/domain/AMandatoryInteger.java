@@ -3,8 +3,8 @@ package domain;
 import validation.core.Field;
 import validation.core.Validator;
 
+import static org.hamcrest.Matchers.lessThanOrEqualTo;
 import static validation.library.ValidationMatchers.*;
-import static org.hamcrest.Matchers.lessThan;
 
 public class AMandatoryInteger {
     private final Field field;
@@ -16,6 +16,6 @@ public class AMandatoryInteger {
     public void describeTo(Validator validator) {
         validator.validateThat(field, isMandatory());
         validator.validateThat(field, isAWholeNumber());
-        validator.validateThat(field, hasLength(lessThan(9)));
+        validator.validateThat(field, hasLength(lessThanOrEqualTo(4)));
     }
 }
