@@ -1,4 +1,4 @@
-package domain;
+package example;
 
 import validation.core.Field;
 import validation.core.Validator;

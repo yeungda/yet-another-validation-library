@@ -1,4 +1,4 @@
-package domain;
+package example;
 
 import org.hamcrest.Matchers;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package domain;
+package example;
 
 import validation.core.Validator;
 
@@ -14,7 +14,7 @@ public class Controller {
     public Controller() {
         this.properties = new Properties();
         try {
-            properties.load(getClass().getClassLoader().getResourceAsStream("domain/test.properties"));
+            properties.load(getClass().getClassLoader().getResourceAsStream("example/test.properties"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

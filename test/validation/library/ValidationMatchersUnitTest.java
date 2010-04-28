@@ -1,6 +1,5 @@
 package validation.library;
 
-import validation.library.ValidationMatchers;
 import org.hamcrest.Matcher;
 import org.hamcrest.StringDescription;
 import org.junit.Ignore;

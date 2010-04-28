@@ -2,17 +2,16 @@ package validation.core;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
+import org.hamcrest.Matchers;
 import org.junit.Test;
 import org.junit.internal.matchers.TypeSafeMatcher;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
 
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
-import static org.junit.matchers.JUnitMatchers.hasItem;
 
 public class ValidatorUnitTest {
     private static final Field FIELD = new Field("field", "");
@@ -24,14 +23,14 @@ public class ValidatorUnitTest {
 
     @Test
     public void shouldValidateASingleField() {
-        assertThat(validating(FIELD, isNeverGoodEnough()), hasErrorMessageForField("field", "never good enough"));
+        assertThat(validating(FIELD, isNeverGoodEnough()), TestingMatchers.hasErrorMessageForField("field", "never good enough"));
         assertThat(validating(FIELD, isNeverGoodEnough(), isNeverGoodEnoughForOtherReasons()),
                 allOf(
-                        hasErrorMessageForField("field", "never good enough"),
-                        not(hasErrorMessageForField("field", "other reasons"))
+                        TestingMatchers.hasErrorMessageForField("field", "never good enough"),
+                        not(TestingMatchers.hasErrorMessageForField("field", "other reasons"))
                 )
         );
-        assertThat(validating(FIELD, isAlwaysPerfect(), isNeverGoodEnough()), hasErrorMessageForField("field", "never good enough"));
+        assertThat(validating(FIELD, isAlwaysPerfect(), isNeverGoodEnough()), TestingMatchers.hasErrorMessageForField("field", "never good enough"));
         assertThat(validating(FIELD, isAlwaysPerfect()), hasSize(0));
     }
 
@@ -42,8 +41,8 @@ public class ValidatorUnitTest {
         validator.validateThat(new Field("b", ""), isNeverGoodEnough());
         assertThat(reportOf(validator),
                 allOf(
-                        hasErrorMessageForField("a", "never good enough"),
-                        hasErrorMessageForField("b", "never good enough")
+                        TestingMatchers.hasErrorMessageForField("a", "never good enough"),
+                        TestingMatchers.hasErrorMessageForField("b", "never good enough")
                 )
         );
     }
@@ -98,27 +97,4 @@ public class ValidatorUnitTest {
         return validationErrors;
     }
 
-    private Matcher<Iterable<ValidationError>> hasErrorMessageForField(String fieldName, String message) {
-        return hasItem(fieldWithError(fieldName, message));
-    }
-
-    private Matcher<ValidationError> fieldWithError(final String fieldName, final String message) {
-        return new TypeSafeMatcher<ValidationError>() {
-
-            @Override
-            public boolean matchesSafely(ValidationError validationError) {
-                final HashMap<String, String> map = new HashMap<String, String>();
-                validationError.describeTo(map);
-                return fieldName.equals(map.get("fieldName")) && message.equals(map.get("description"));
-            }
-
-            @Override
-            public void describeTo(Description description) {
-                description.appendText("Field Name ");
-                description.appendValue(fieldName);
-                description.appendText(" with description ");
-                description.appendValue(message);
-            }
-        };
-    }
 }

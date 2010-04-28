@@ -1,6 +1,5 @@
 package validation.core;
 
-import domain.Controller;
 import org.hamcrest.Matcher;
 import org.hamcrest.StringDescription;
 
