@@ -20,7 +20,7 @@ public class Controller {
         }
     }
 
-    public Map validate(AMandatoryInteger amount) {
+    public Map validate(Amount amount) {
         final Validator validator = new Validator();
         final ModelMapErrorMessageWriter errorMessageWriter = new ModelMapErrorMessageWriter(properties);
         final ArrayList<Map<String, String>> errorMessages = new ArrayList<Map<String, String>>();

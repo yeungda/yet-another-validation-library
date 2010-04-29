@@ -10,13 +10,13 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.assertThat;
 
-public class AMandatoryIntegerUnitTest {
+public class AmountUnitTest {
     @Test
     public void shouldValidateAmount() {
 
-        final AMandatoryInteger aMandatoryInteger = new AMandatoryInteger(new Field("amount", "12345"));
+        final Amount amount = new Amount(new Field("amount", "12345"));
         final Validator validator = new Validator();
-        aMandatoryInteger.describeTo(validator);
+        amount.describeTo(validator);
         final ArrayList<ValidationError> validationErrors = new ArrayList<ValidationError>();
         validator.describeErrors(validationErrors);
         assertThat(validationErrors, TestingMatchers.hasErrorMessageForField("amount", "has length of a value less than or equal to <4>"));

@@ -6,10 +6,10 @@ import validation.core.Validator;
 import static org.hamcrest.Matchers.lessThanOrEqualTo;
 import static validation.library.ValidationMatchers.*;
 
-public class AMandatoryInteger {
+public class Amount {
     private final Field field;
 
-    public AMandatoryInteger(Field field) {
+    public Amount(Field field) {
         this.field = field;
     }
 

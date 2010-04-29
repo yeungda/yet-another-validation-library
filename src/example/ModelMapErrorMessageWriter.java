@@ -19,7 +19,12 @@ public class ModelMapErrorMessageWriter implements ErrorMessageWriter {
     @Override
     public void write(String fieldName, String description) {
         final LinkedHashMap<String, String> error = new LinkedHashMap<String, String>();
-        error.put(fieldName, (String)properties.get(fieldName + ".failed." + description.replaceAll(" ", ".")));
+        final String propertyName = fieldName + ".failed." + description.replaceAll(" ", ".");
+        final String message = properties.getProperty(propertyName);
+        if (message == null) {
+            throw new RuntimeException(String.format("Failed to find property [%s]", propertyName));
+        }
+        error.put(fieldName, message);
         errorMessages.add(error);
     }
 
