@@ -13,13 +13,14 @@ public class Validator implements Validate {
     private Collection<State> states = new ArrayList<State>(10);
 
     @Override
-    public void validateThat(Field field, Matcher<? extends String> matcher) {
+    public Validate validateThat(Field field, Matcher<? extends String> matcher) {
         final ErrorId errorId = new ErrorId();
         field.describeTo(errorId);
         if (hasNoRecordedErrorFor(errorId) && !field.matches(matcher)) {
             alreadyValidated.add(errorId);
             validationErrors.add(createValidationError(field, matcher));
         }
+        return this;
     }
 
     private ValidationError createValidationError(Field field, Matcher<? extends String> matcher) {
@@ -50,10 +51,11 @@ public class Validator implements Validate {
     public <T> Validate whenStates(final Matcher<Iterable<? super T>> statesMatcher) {
         return new Validate() {
             @Override
-            public void validateThat(Field field, Matcher<? extends String> matcher) {
+            public Validate validateThat(Field field, Matcher<? extends String> matcher) {
                 if (statesMatcher.matches(states)) {
                     Validator.this.validateThat(field, matcher);
                 }
+                return this;
             }
         };
     }

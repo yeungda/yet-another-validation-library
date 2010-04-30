@@ -1,10 +1,8 @@
-package example;
+package example.domain;
 
-import org.hamcrest.Matchers;
 import validation.core.Field;
 import validation.core.State;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 import static org.hamcrest.Matchers.*;

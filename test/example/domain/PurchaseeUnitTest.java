@@ -1,5 +1,7 @@
-package example;
+package example.domain;
 
+import example.domain.PizzaStates;
+import example.domain.Purchasee;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 import validation.core.Field;

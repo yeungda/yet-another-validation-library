@@ -1,5 +1,8 @@
 package example;
 
+import example.domain.Amount;
+import example.domain.PizzaOrder;
+import example.domain.Purchasee;
 import org.junit.Before;
 import org.junit.Test;
 import validation.core.Field;

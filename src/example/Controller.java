@@ -1,5 +1,6 @@
 package example;
 
+import example.domain.PizzaOrder;
 import validation.core.State;
 import validation.core.Validator;
 

@@ -3,6 +3,7 @@ package validation.core;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.internal.matchers.TypeSafeMatcher;
 
@@ -18,6 +19,7 @@ import static org.junit.Assert.assertThat;
 
 public class ValidatorUnitTest {
     private static final Field FIELD = new Field("field", "");
+    private Validator validator;
 
     @Test
     public void shouldValidateNoFields() {
@@ -39,7 +41,6 @@ public class ValidatorUnitTest {
 
     @Test
     public void shouldValidateMultipleFields() {
-        final Validator validator = new Validator();
         validator.validateThat(new Field("a", ""), isNeverGoodEnough());
         validator.validateThat(new Field("b", ""), isNeverGoodEnough());
         assertThat(reportOf(validator),
@@ -52,7 +53,6 @@ public class ValidatorUnitTest {
 
     @Test
     public void shouldIgnoreValidationThatDependsOnAnUnknownState() {
-        final Validator validator = new Validator();
         validator.addStates(Collections.EMPTY_LIST);
         validator.whenStates(hasItem(TestingStates.BOX_IS_TICKED)).validateThat(new Field("amount", ""), isNeverGoodEnough());
         assertThat(reportOf(validator), Matchers.hasSize(0));
@@ -60,7 +60,6 @@ public class ValidatorUnitTest {
 
     @Test
     public void shouldApplyValidationThatDependsOnAKnownState() {
-        final Validator validator = new Validator();
         validator.addStates(Arrays.asList(TestingStates.BOX_IS_TICKED));
         validator.whenStates(hasItem(TestingStates.BOX_IS_TICKED)).validateThat(new Field("amount", ""), isNeverGoodEnough());
         assertThat(reportOf(validator), Matchers.hasSize(1));
@@ -72,6 +71,15 @@ public class ValidatorUnitTest {
         validator.addStates(Arrays.asList(TestingStates.BOX_IS_TICKED, TestingStates.SUM_IS_PROVIDED));
         validator.whenStates(allOf(hasItem(TestingStates.BOX_IS_TICKED), hasItem(TestingStates.SUM_IS_PROVIDED))).validateThat(new Field("amount", ""), isNeverGoodEnough());
         assertThat(reportOf(validator), Matchers.hasSize(1));
+    }
+
+    @Test
+    public void shouldApplyManyValidationRulesThatDependOnAKnownState() {
+        validator.addStates(Arrays.asList(TestingStates.BOX_IS_TICKED));
+        validator.whenStates(hasItem(TestingStates.BOX_IS_TICKED))
+                .validateThat(new Field("amount", ""), isNeverGoodEnough())
+                .validateThat(new Field("another", ""), isNeverGoodEnough());
+        assertThat(reportOf(validator), Matchers.hasSize(2));
     }
 
     private Matcher<? extends String> isNeverGoodEnoughForOtherReasons() {
@@ -122,6 +130,11 @@ public class ValidatorUnitTest {
         final List<ValidationError> validationErrors = new ArrayList<ValidationError>();
         validator.describeErrors(validationErrors);
         return validationErrors;
+    }
+
+    @Before
+    public void setUp() throws Exception {
+        validator = new Validator();
     }
 
     public enum TestingStates implements State {

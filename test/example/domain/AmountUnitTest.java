@@ -1,5 +1,7 @@
-package example;
+package example.domain;
 
+import example.domain.Amount;
+import example.domain.PizzaStates;
 import org.junit.Test;
 import validation.core.Field;
 import validation.core.TestingMatchers;

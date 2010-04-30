@@ -1,9 +1,8 @@
-package example;
+package example.domain;
 
 import validation.core.State;
 import validation.core.Validator;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 public class PizzaOrder {
