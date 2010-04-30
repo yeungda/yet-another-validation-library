@@ -7,9 +7,12 @@ import org.junit.Test;
 import org.junit.internal.matchers.TypeSafeMatcher;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
+import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
 
@@ -45,6 +48,30 @@ public class ValidatorUnitTest {
                         TestingMatchers.hasErrorMessageForField("b", "never good enough")
                 )
         );
+    }
+
+    @Test
+    public void shouldIgnoreValidationThatDependsOnAnUnknownState() {
+        final Validator validator = new Validator();
+        validator.addStates(Collections.EMPTY_LIST);
+        validator.whenStates(hasItem(TestingStates.BOX_IS_TICKED)).validateThat(new Field("amount", ""), isNeverGoodEnough());
+        assertThat(reportOf(validator), Matchers.hasSize(0));
+    }
+
+    @Test
+    public void shouldApplyValidationThatDependsOnAKnownState() {
+        final Validator validator = new Validator();
+        validator.addStates(Arrays.asList(TestingStates.BOX_IS_TICKED));
+        validator.whenStates(hasItem(TestingStates.BOX_IS_TICKED)).validateThat(new Field("amount", ""), isNeverGoodEnough());
+        assertThat(reportOf(validator), Matchers.hasSize(1));
+    }
+
+    @Test
+    public void shouldApplyValidationThatDependsOnManyKnownStates() {
+        final Validator validator = new Validator();
+        validator.addStates(Arrays.asList(TestingStates.BOX_IS_TICKED, TestingStates.SUM_IS_PROVIDED));
+        validator.whenStates(allOf(hasItem(TestingStates.BOX_IS_TICKED), hasItem(TestingStates.SUM_IS_PROVIDED))).validateThat(new Field("amount", ""), isNeverGoodEnough());
+        assertThat(reportOf(validator), Matchers.hasSize(1));
     }
 
     private Matcher<? extends String> isNeverGoodEnoughForOtherReasons() {
@@ -97,4 +124,7 @@ public class ValidatorUnitTest {
         return validationErrors;
     }
 
+    public enum TestingStates implements State {
+        BOX_IS_TICKED, SUM_IS_PROVIDED;
+    }
 }

@@ -7,10 +7,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class Validator {
+public class Validator implements Validate {
     private final Collection<ValidationError> validationErrors = new ArrayList<ValidationError>(10);
     private final Collection<ErrorId> alreadyValidated = new ArrayList<ErrorId>(10);
+    private Collection<State> states = new ArrayList<State>(10);
 
+    @Override
     public void validateThat(Field field, Matcher<? extends String> matcher) {
         final ErrorId errorId = new ErrorId();
         field.describeTo(errorId);
@@ -43,5 +45,20 @@ public class Validator {
         for (ValidationError validationError : this.validationErrors) {
             validationError.describeTo(errorMessageWriter);
         }
+    }
+
+    public <T> Validate whenStates(final Matcher<Iterable<? super T>> statesMatcher) {
+        return new Validate() {
+            @Override
+            public void validateThat(Field field, Matcher<? extends String> matcher) {
+                if (statesMatcher.matches(states)) {
+                    Validator.this.validateThat(field, matcher);
+                }
+            }
+        };
+    }
+
+    public void addStates(Collection<? extends State> states) {
+        this.states.addAll(states);
     }
 }

@@ -13,7 +13,6 @@ import static org.junit.Assert.assertThat;
 public class AmountUnitTest {
     @Test
     public void shouldValidateAmount() {
-
         final Amount amount = new Amount(new Field("amount", "12345"));
         final Validator validator = new Validator();
         amount.describeTo(validator);
