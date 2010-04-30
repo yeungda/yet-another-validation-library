@@ -7,6 +7,7 @@ import validation.core.ValidationError;
 import validation.core.Validator;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import static org.junit.Assert.assertThat;
 
@@ -15,6 +16,7 @@ public class AmountUnitTest {
     public void shouldValidateAmount() {
         final Amount amount = new Amount(new Field("amount", "12345"));
         final Validator validator = new Validator();
+        validator.addStates(Arrays.asList(PizzaStates.CUSTOMER));
         amount.describeTo(validator);
         final ArrayList<ValidationError> validationErrors = new ArrayList<ValidationError>();
         validator.describeErrors(validationErrors);

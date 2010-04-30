@@ -1,8 +1,10 @@
 package example;
 
+import org.hamcrest.Matchers;
 import validation.core.Field;
 import validation.core.Validator;
 
+import static org.hamcrest.Matchers.*;
 import static org.hamcrest.Matchers.lessThanOrEqualTo;
 import static validation.library.ValidationMatchers.*;
 
@@ -14,8 +16,8 @@ public class Amount {
     }
 
     public void describeTo(Validator validator) {
-        validator.validateThat(field, isMandatory());
-        validator.validateThat(field, isAWholeNumber());
-        validator.validateThat(field, hasLength(lessThanOrEqualTo(4)));
+        validator.whenStates(hasItem(PizzaStates.CUSTOMER)).validateThat(field, isMandatory());
+        validator.whenStates(hasItem(PizzaStates.CUSTOMER)).validateThat(field, isAWholeNumber());
+        validator.whenStates(hasItem(PizzaStates.CUSTOMER)).validateThat(field, hasLength(lessThanOrEqualTo(4)));
     }
 }

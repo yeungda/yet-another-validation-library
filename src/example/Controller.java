@@ -1,5 +1,6 @@
 package example;
 
+import validation.core.State;
 import validation.core.Validator;
 
 import java.io.IOException;
@@ -20,12 +21,17 @@ public class Controller {
         }
     }
 
-    public Map validate(Amount amount) {
+    public Map validate(PizzaOrder pizzaOrder) {
         final Validator validator = new Validator();
         final ModelMapErrorMessageWriter errorMessageWriter = new ModelMapErrorMessageWriter(properties);
         final ArrayList<Map<String, String>> errorMessages = new ArrayList<Map<String, String>>();
 
-        amount.describeTo(validator);
+        final ArrayList<State> states = new ArrayList<State>();
+        pizzaOrder.describeTo(states);
+        validator.addStates(states);
+        
+        pizzaOrder.describeTo(validator);
+
         validator.describeErrorsTo(errorMessageWriter);
         errorMessageWriter.describeTo(errorMessages);
         final HashMap hashMap = new HashMap();
