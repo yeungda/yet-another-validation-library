@@ -2,6 +2,6 @@ package example.domain;
 
 import validation.core.State;
 
-public enum PizzaStates implements State {
+public enum PizzaState implements State {
     CUSTOMER
 }

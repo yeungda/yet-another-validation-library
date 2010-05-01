@@ -24,16 +24,14 @@ public class Controller {
 
     public Map validate(PizzaOrder pizzaOrder) {
         final Validator validator = new Validator();
-        final ModelMapErrorMessageWriter errorMessageWriter = new ModelMapErrorMessageWriter(properties);
-        final ArrayList<Map<String, String>> errorMessages = new ArrayList<Map<String, String>>();
-
         final ArrayList<State> states = new ArrayList<State>();
         pizzaOrder.describeTo(states);
         validator.addStates(states);
-        
         pizzaOrder.describeTo(validator);
 
+        final ModelMapErrorMessageWriter errorMessageWriter = new ModelMapErrorMessageWriter(properties);
         validator.describeErrorsTo(errorMessageWriter);
+        final ArrayList<Map<String, String>> errorMessages = new ArrayList<Map<String, String>>();
         errorMessageWriter.describeTo(errorMessages);
         final HashMap hashMap = new HashMap();
         hashMap.put("errors", errorMessages);

@@ -1,7 +1,7 @@
 package example.domain;
 
 import example.domain.Amount;
-import example.domain.PizzaStates;
+import example.domain.PizzaState;
 import org.junit.Test;
 import validation.core.Field;
 import validation.core.TestingMatchers;
@@ -18,7 +18,7 @@ public class AmountUnitTest {
     public void shouldValidateAmount() {
         final Amount amount = new Amount(new Field("amount", "12345"));
         final Validator validator = new Validator();
-        validator.addStates(Arrays.asList(PizzaStates.CUSTOMER));
+        validator.addStates(Arrays.asList(PizzaState.CUSTOMER));
         amount.describeTo(validator);
         final ArrayList<ValidationError> validationErrors = new ArrayList<ValidationError>();
         validator.describeErrors(validationErrors);

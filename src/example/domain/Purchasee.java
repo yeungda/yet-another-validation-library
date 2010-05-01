@@ -1,11 +1,8 @@
 package example.domain;
 
 import validation.core.Field;
-import validation.core.State;
 
-import java.util.Collection;
-
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.equalTo;
 
 public class Purchasee {
     private final Field field;
@@ -14,9 +11,9 @@ public class Purchasee {
         this.field = field;
     }
 
-    public void describeTo(Collection<? super State> states) {
+    public void describeTo(States states) {
         if (field.matches(equalTo("customer"))) {
-            states.add(PizzaStates.CUSTOMER);
+            states.add(PizzaState.CUSTOMER);
         }
     }
 }
