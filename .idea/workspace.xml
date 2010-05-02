@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager" verified="true">
-    <list default="true" id="53b36430-9a62-42c5-91ae-91003090a259" name="Default" comment="" />
+    <list default="true" id="53b36430-9a62-42c5-91ae-91003090a259" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.markdown" afterPath="$PROJECT_DIR$/README.markdown" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="validation.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -89,19 +92,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build-test.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/conf/build/build-test.xml">
+      <file leaf-file-name="build-jar.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/conf/build/build-jar.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="18" selection-start="69" selection-end="69" vertical-scroll-proportion="-2.7826087">
+            <state line="11" column="0" selection-start="370" selection-end="370" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build-jar.xml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/conf/build/build-jar.xml">
+      <file leaf-file-name="README.markdown" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.markdown">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="0" selection-start="370" selection-end="370" vertical-scroll-proportion="0.3744681">
+            <state line="3" column="0" selection-start="119" selection-end="119" vertical-scroll-proportion="0.10549451">
               <folding />
             </state>
           </provider>
@@ -127,12 +130,12 @@
         <option value="$PROJECT_DIR$/core/src/main/validation/core/Validator.java" />
         <option value="$PROJECT_DIR$/core/src/test/validation/core/ValidatorUnitTest.java" />
         <option value="$PROJECT_DIR$/NOTICE" />
-        <option value="$PROJECT_DIR$/README.markdown" />
         <option value="$PROJECT_DIR$/build.xml" />
         <option value="$PROJECT_DIR$/conf/build/build-bootstrap.xml" />
         <option value="$PROJECT_DIR$/core/build.xml" />
         <option value="$PROJECT_DIR$/core/src/main/java/validation/library/ValidationMatchers.java" />
         <option value="$PROJECT_DIR$/conf/build/build-jar.xml" />
+        <option value="$PROJECT_DIR$/README.markdown" />
       </list>
     </option>
   </component>
@@ -772,13 +775,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.markdown">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="0" selection-start="333" selection-end="333" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/conf/build/build-bootstrap.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="93" selection-start="134" selection-end="134" vertical-scroll-proportion="0.0">
@@ -818,7 +814,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/conf/build/build-jar.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="0" selection-start="370" selection-end="370" vertical-scroll-proportion="0.3744681">
+        <state line="11" column="0" selection-start="370" selection-end="370" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.markdown">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="0" selection-start="119" selection-end="119" vertical-scroll-proportion="0.10549451">
           <folding />
         </state>
       </provider>
