@@ -1,7 +1,5 @@
 package validation.core;
 
-import validation.core.ErrorMessageWriter;
-
 import java.util.Map;
 
 public class MapErrorMessageWriter implements ErrorMessageWriter {

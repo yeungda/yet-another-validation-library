@@ -1,11 +1,11 @@
 package validation.example;
 
-import validation.example.domain.Amount;
-import validation.example.domain.PizzaOrder;
-import validation.example.domain.Purchasee;
 import org.junit.Before;
 import org.junit.Test;
 import validation.core.Field;
+import validation.example.domain.Amount;
+import validation.example.domain.PizzaOrder;
+import validation.example.domain.Purchasee;
 
 import java.util.Collection;
 import java.util.Map;
@@ -47,7 +47,7 @@ public class PizzaOrderControllerFunctionalTest {
 
     private Map<String, String> validating(PizzaOrder order) {
         final Map map = controller.validate(order);
-        final Collection<Map<String, String>> errors = (Collection<Map<String, String>>)map.get("errors");
+        final Collection<Map<String, String>> errors = (Collection<Map<String, String>>) map.get("errors");
         final Map<String, String> error = errors.iterator().hasNext() ? errors.iterator().next() : null;
         return error;
     }

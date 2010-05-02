@@ -5,7 +5,6 @@ import org.hamcrest.StringDescription;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 public class Validator implements Validate {
     private final Collection<ValidationError> validationErrors = new ArrayList<ValidationError>(10);

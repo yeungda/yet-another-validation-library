@@ -1,8 +1,8 @@
 package validation.example;
 
+import validation.core.Validator;
 import validation.example.domain.PizzaOrder;
 import validation.example.domain.States;
-import validation.core.Validator;
 
 import java.io.IOException;
 import java.util.ArrayList;

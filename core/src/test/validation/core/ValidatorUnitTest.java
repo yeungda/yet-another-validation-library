@@ -7,12 +7,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.internal.matchers.TypeSafeMatcher;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import static org.hamcrest.CoreMatchers.hasItem;
@@ -121,12 +118,12 @@ public class ValidatorUnitTest {
     }
 
     private Map<String, String> validating(Field field, Matcher<? extends String>... matchers) {
-            Validator validator = new Validator();
-            for (Matcher<? extends String> matcher : matchers) {
-                validator.validateThat(field, matcher);
-            }
-            return reportOf(validator);
+        Validator validator = new Validator();
+        for (Matcher<? extends String> matcher : matchers) {
+            validator.validateThat(field, matcher);
         }
+        return reportOf(validator);
+    }
 
 
     private Map<String, String> reportOf(Validator validator) {

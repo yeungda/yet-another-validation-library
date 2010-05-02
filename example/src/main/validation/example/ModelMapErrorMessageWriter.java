@@ -28,7 +28,7 @@ public class ModelMapErrorMessageWriter implements ErrorMessageWriter {
         errorMessages.add(error);
     }
 
-    public void describeTo(Collection<Map<String,String>> errorMessages) {
+    public void describeTo(Collection<Map<String, String>> errorMessages) {
         errorMessages.addAll(this.errorMessages);
     }
 }

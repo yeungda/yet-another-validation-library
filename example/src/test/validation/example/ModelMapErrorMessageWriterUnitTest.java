@@ -8,7 +8,8 @@ import java.util.Map;
 import java.util.Properties;
 
 import static junit.framework.Assert.fail;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.hasEntry;
 import static org.junit.Assert.assertThat;
 
 public class ModelMapErrorMessageWriterUnitTest {

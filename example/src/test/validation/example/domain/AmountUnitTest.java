@@ -2,13 +2,13 @@ package validation.example.domain;
 
 import org.junit.Test;
 import validation.core.Field;
-import validation.core.Validator;
 import validation.core.MapErrorMessageWriter;
+import validation.core.Validator;
 
 import java.util.Arrays;
 import java.util.HashMap;
 
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.hasEntry;
 import static org.junit.Assert.assertThat;
 
 public class AmountUnitTest {
