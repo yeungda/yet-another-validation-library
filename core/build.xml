@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ Copyright 2010 David Yeung
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<project name="yet-another-validation-library-core" default="all" >
+
+    <target name="all" depends="bootstrap, clean, dependencies, compile, test, jar" />
+
+    <target name="build">
+        <echo message="running webcons-backend build target placeholder"/>
+    </target>
+
+    <path id="compile.classpath"><fileset dir="${basedir}/../lib"><include name="hamcrest-all-1.3RC0.jar"/></fileset></path>
+    <property name="ivy.module" value="yet-another-validation-library-core"/>
+    <import file="${basedir}/../conf/build/build-bootstrap.xml"/>
+    <import file="${basedir}/../conf/build/build-clean.xml"/>
+    <!--<import file="${basedir}/../conf/build/build-ivy.xml"/>-->
+    <target name="dependencies"/>
+    <import file="${basedir}/../conf/build/build-compile.xml"/>
+    <import file="${basedir}/../conf/build/build-test.xml"/>
+    <import file="${basedir}/../conf/build/build-jar.xml"/>
+
+</project>

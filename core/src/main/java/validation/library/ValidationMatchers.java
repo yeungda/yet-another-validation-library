@@ -18,7 +18,7 @@ package validation.library;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
-import org.junit.internal.matchers.TypeSafeMatcher;
+import org.hamcrest.TypeSafeMatcher;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

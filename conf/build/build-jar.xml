@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project>
+    <target name="jar">
+        <mkdir dir="${basedir}/target/dist"/>
+        <jar destfile="${basedir}/target/dist/${ivy.module}.jar">
+            <metainf dir="${basedir}/.." includes="LICENSE,NOTICE"/>
+            <zipfileset dir="${basedir}/target/classes/main"/>            
+        </jar>
+    </target>
+</project>

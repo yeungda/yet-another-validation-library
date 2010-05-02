@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project>
+
+	<property name="ivy-eclipse.exclude" value=""/>
+
+    <taskdef name="ivy-configure" classname="org.apache.ivy.ant.IvyConfigure"/>
+    <taskdef name="ivy-info" classname="org.apache.ivy.ant.IvyInfo"/>
+    <taskdef name="ivy-resolve" classname="org.apache.ivy.ant.IvyResolve"/>
+    <taskdef name="ivy-cachepath" classname="org.apache.ivy.ant.IvyCachePath"/>
+
+    <target name="dependencies-setup">
+        <ivy-configure file="${basedir}/conf/build/ivysettings.xml"/>
+    </target>
+
+    <target name="dependencies" depends="dependencies-setup">
+        <taskdef name="ivy-configure" classname="org.apache.ivy.ant.IvyConfigure"/>
+        <taskdef name="ivy-resolve" classname="org.apache.ivy.ant.IvyResolve"/>
+        <taskdef name="ivy-cachepath" classname="org.apache.ivy.ant.IvyCachePath"/>
+        <ivy-resolve file="${basedir}/ivy.xml"/>
+        <ivy-cachepath pathid="runtime.classpath" conf="runtime" type="jar" />
+        <ivy-cachepath pathid="compile.classpath" conf="compile" type="jar" />
+        <ivy-cachepath pathid="test.classpath" conf="test" type="jar" />
+    </target>
+
+    <target name="dependencies-clean-artifacts" depends="dependencies">
+        <delete dir="${cache.dir}/${ivy.organisation}/${ivy.module}" includeEmptyDirs="true" failonerror="true" />
+        <delete dir="${local.dir}/${ivy.organisation}/${ivy.module}" includeEmptyDirs="true" failonerror="true" />
+    </target>
+
+    <target name="eclipse-classpath" depends="dependencies" description="creates .classpath file from ivy configuration">
+        <taskdef name="ivy-eclipse" classname="ivyeclipse.IvyEclipse"/>
+        <ivy-eclipse conf="test" exclude="${ivy-eclipse.exclude}"/>
+    </target>
+
+    <target name="dependencies-report" depends="dependencies">
+        <taskdef name="ivy-report" classname="org.apache.ivy.ant.IvyReport" />
+        <delete dir="${basedir}/target/ivy-report" />
+        <mkdir dir="${basedir}/target/ivy-report" />
+        <ivy-report todir="${basedir}/target/ivy-report" />
+    </target>
+
+</project>
