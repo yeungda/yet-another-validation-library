@@ -14,8 +14,8 @@ import static org.hamcrest.Matchers.hasEntry;
 import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertThat;
 
-public class ControllerFunctionalTest {
-    private Controller controller;
+public class PizzaOrderControllerFunctionalTest {
+    private PizzaOrderController controller;
 
     @Test
     public void validatePizzaOrder() {
@@ -54,6 +54,6 @@ public class ControllerFunctionalTest {
 
     @Before
     public void start() throws Exception {
-        controller = new Controller();
+        controller = new PizzaOrderController();
     }
 }

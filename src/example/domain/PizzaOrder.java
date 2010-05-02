@@ -21,7 +21,7 @@ public class PizzaOrder {
         this.purchasee = purchasee;
     }
 
-    public void describeTo(Collection<State> states) {
+    public void describeTo(States states) {
         purchasee.describeTo(states);
     }
 }

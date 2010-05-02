@@ -1,6 +1,7 @@
 package example;
 
 import example.domain.PizzaOrder;
+import example.domain.States;
 import validation.core.State;
 import validation.core.Validator;
 
@@ -10,10 +11,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
-public class Controller {
+public class PizzaOrderController {
     private final Properties properties;
 
-    public Controller() {
+    public PizzaOrderController() {
         this.properties = new Properties();
         try {
             properties.load(getClass().getClassLoader().getResourceAsStream("example/test.properties"));
@@ -24,7 +25,7 @@ public class Controller {
 
     public Map validate(PizzaOrder pizzaOrder) {
         final Validator validator = new Validator();
-        final ArrayList<State> states = new ArrayList<State>();
+        final States states = new States();
         pizzaOrder.describeTo(states);
         validator.addStates(states);
         pizzaOrder.describeTo(validator);
