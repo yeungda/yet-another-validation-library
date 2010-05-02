@@ -11,7 +11,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.hamcrest.CoreMatchers.hasItem;
 import static org.hamcrest.Matchers.*;
@@ -23,20 +25,20 @@ public class ValidatorUnitTest {
 
     @Test
     public void shouldValidateNoFields() {
-        assertThat(reportOf(new Validator()), hasSize(0));
+        assertThat(reportOf(new Validator()).values(), hasSize(0));
     }
 
     @Test
     public void shouldValidateASingleField() {
-        assertThat(validating(FIELD, isNeverGoodEnough()), TestingMatchers.hasErrorMessageForField("field", "never good enough"));
+        assertThat(validating(FIELD, isNeverGoodEnough()), hasEntry("field", "never good enough"));
         assertThat(validating(FIELD, isNeverGoodEnough(), isNeverGoodEnoughForOtherReasons()),
                 allOf(
-                        TestingMatchers.hasErrorMessageForField("field", "never good enough"),
-                        not(TestingMatchers.hasErrorMessageForField("field", "other reasons"))
+                        hasEntry("field", "never good enough"),
+                        not(hasEntry("field", "other reasons"))
                 )
         );
-        assertThat(validating(FIELD, isAlwaysPerfect(), isNeverGoodEnough()), TestingMatchers.hasErrorMessageForField("field", "never good enough"));
-        assertThat(validating(FIELD, isAlwaysPerfect()), hasSize(0));
+        assertThat(validating(FIELD, isAlwaysPerfect(), isNeverGoodEnough()), hasEntry("field", "never good enough"));
+        assertThat(validating(FIELD, isAlwaysPerfect()).values(), hasSize(0));
     }
 
     @Test
@@ -45,8 +47,8 @@ public class ValidatorUnitTest {
         validator.validateThat(new Field("b", ""), isNeverGoodEnough());
         assertThat(reportOf(validator),
                 allOf(
-                        TestingMatchers.hasErrorMessageForField("a", "never good enough"),
-                        TestingMatchers.hasErrorMessageForField("b", "never good enough")
+                        hasEntry("a", "never good enough"),
+                        hasEntry("b", "never good enough")
                 )
         );
     }
@@ -55,14 +57,14 @@ public class ValidatorUnitTest {
     public void shouldIgnoreValidationThatDependsOnAnUnknownState() {
         validator.addStates(Collections.EMPTY_LIST);
         validator.whenStates(hasItem(TestingStates.BOX_IS_TICKED)).validateThat(new Field("amount", ""), isNeverGoodEnough());
-        assertThat(reportOf(validator), Matchers.hasSize(0));
+        assertThat(reportOf(validator).values(), Matchers.hasSize(0));
     }
 
     @Test
     public void shouldApplyValidationThatDependsOnAKnownState() {
         validator.addStates(Arrays.asList(TestingStates.BOX_IS_TICKED));
         validator.whenStates(hasItem(TestingStates.BOX_IS_TICKED)).validateThat(new Field("amount", ""), isNeverGoodEnough());
-        assertThat(reportOf(validator), Matchers.hasSize(1));
+        assertThat(reportOf(validator).values(), Matchers.hasSize(1));
     }
 
     @Test
@@ -70,7 +72,7 @@ public class ValidatorUnitTest {
         final Validator validator = new Validator();
         validator.addStates(Arrays.asList(TestingStates.BOX_IS_TICKED, TestingStates.SUM_IS_PROVIDED));
         validator.whenStates(allOf(hasItem(TestingStates.BOX_IS_TICKED), hasItem(TestingStates.SUM_IS_PROVIDED))).validateThat(new Field("amount", ""), isNeverGoodEnough());
-        assertThat(reportOf(validator), Matchers.hasSize(1));
+        assertThat(reportOf(validator).values(), Matchers.hasSize(1));
     }
 
     @Test
@@ -79,7 +81,7 @@ public class ValidatorUnitTest {
         validator.whenStates(hasItem(TestingStates.BOX_IS_TICKED))
                 .validateThat(new Field("amount", ""), isNeverGoodEnough())
                 .validateThat(new Field("another", ""), isNeverGoodEnough());
-        assertThat(reportOf(validator), Matchers.hasSize(2));
+        assertThat(reportOf(validator).values(), Matchers.hasSize(2));
     }
 
     private Matcher<? extends String> isNeverGoodEnoughForOtherReasons() {
@@ -118,18 +120,20 @@ public class ValidatorUnitTest {
         };
     }
 
-    private Collection<ValidationError> validating(Field field, Matcher<? extends String>... matchers) {
-        Validator validator = new Validator();
-        for (Matcher<? extends String> matcher : matchers) {
-            validator.validateThat(field, matcher);
+    private Map<String, String> validating(Field field, Matcher<? extends String>... matchers) {
+            Validator validator = new Validator();
+            for (Matcher<? extends String> matcher : matchers) {
+                validator.validateThat(field, matcher);
+            }
+            return reportOf(validator);
         }
-        return reportOf(validator);
-    }
 
-    private Collection<ValidationError> reportOf(Validator validator) {
-        final List<ValidationError> validationErrors = new ArrayList<ValidationError>();
-        validator.describeErrors(validationErrors);
-        return validationErrors;
+
+    private Map<String, String> reportOf(Validator validator) {
+        final HashMap<String, String> errors = new HashMap<String, String>();
+        final MapErrorMessageWriter messageWriter = new MapErrorMessageWriter(errors);
+        validator.describeErrorsTo(messageWriter);
+        return errors;
     }
 
     @Before

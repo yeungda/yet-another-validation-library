@@ -2,7 +2,7 @@ package validation.core;
 
 import java.util.Map;
 
-public class ValidationError {
+class ValidationError {
     private String fieldName;
     private String description;
 

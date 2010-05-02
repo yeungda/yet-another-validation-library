@@ -16,7 +16,7 @@ public class PizzaOrderController {
     public PizzaOrderController() {
         this.properties = new Properties();
         try {
-            properties.load(getClass().getClassLoader().getResourceAsStream("example/test.properties"));
+            properties.load(getClass().getClassLoader().getResourceAsStream("validation/example/test.properties"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

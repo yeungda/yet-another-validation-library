@@ -1,6 +1,6 @@
 package validation.core;
 
-public class ErrorId {
+class ErrorId {
 
     private String fieldName;
 

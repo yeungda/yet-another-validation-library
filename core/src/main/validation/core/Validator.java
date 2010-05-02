@@ -36,12 +36,6 @@ public class Validator implements Validate {
         return !alreadyValidated.contains(errorId);
     }
 
-    public void describeErrors(List<ValidationError> validationErrors) {
-        for (ValidationError error : this.validationErrors) {
-            validationErrors.add(error);
-        }
-    }
-
     public void describeErrorsTo(ErrorMessageWriter errorMessageWriter) {
         for (ValidationError validationError : this.validationErrors) {
             validationError.describeTo(errorMessageWriter);
