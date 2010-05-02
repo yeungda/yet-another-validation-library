@@ -1,4 +1,4 @@
-package validationhamcrest.library;
+package validation.library;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;

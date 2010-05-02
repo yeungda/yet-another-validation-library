@@ -1,6 +1,6 @@
 package example.domain;
 
-import validationhamcrest.core.Field;
+import validation.core.Field;
 
 import static org.hamcrest.Matchers.equalTo;
 

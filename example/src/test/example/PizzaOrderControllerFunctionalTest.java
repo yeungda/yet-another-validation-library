@@ -5,7 +5,7 @@ import example.domain.PizzaOrder;
 import example.domain.Purchasee;
 import org.junit.Before;
 import org.junit.Test;
-import validationhamcrest.core.Field;
+import validation.core.Field;
 
 import java.util.Collection;
 import java.util.Map;

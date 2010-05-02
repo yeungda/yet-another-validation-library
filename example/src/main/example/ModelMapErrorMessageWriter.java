@@ -1,6 +1,6 @@
 package example;
 
-import validationhamcrest.core.ErrorMessageWriter;
+import validation.core.ErrorMessageWriter;
 
 import java.util.ArrayList;
 import java.util.Collection;

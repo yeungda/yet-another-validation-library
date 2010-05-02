@@ -1,11 +1,11 @@
 package example.domain;
 
-import validationhamcrest.core.Field;
-import validationhamcrest.core.Validator;
+import validation.core.Field;
+import validation.core.Validator;
 
 import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.lessThanOrEqualTo;
-import static validationhamcrest.library.ValidationMatchers.*;
+import static validation.library.ValidationMatchers.*;
 
 public class Amount {
     private final Field field;

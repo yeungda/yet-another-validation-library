@@ -1,12 +1,10 @@
 package example.domain;
 
-import example.domain.Amount;
-import example.domain.PizzaState;
 import org.junit.Test;
-import validationhamcrest.core.Field;
-import validationhamcrest.core.TestingMatchers;
-import validationhamcrest.core.ValidationError;
-import validationhamcrest.core.Validator;
+import validation.core.Field;
+import validation.core.TestingMatchers;
+import validation.core.ValidationError;
+import validation.core.Validator;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,6 +1,6 @@
 package example.domain;
 
-import validationhamcrest.core.Validator;
+import validation.core.Validator;
 
 public class PizzaOrder {
     private Amount amount;

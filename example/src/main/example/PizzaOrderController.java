@@ -2,7 +2,7 @@ package example;
 
 import example.domain.PizzaOrder;
 import example.domain.States;
-import validationhamcrest.core.Validator;
+import validation.core.Validator;
 
 import java.io.IOException;
 import java.util.ArrayList;

@@ -1,6 +1,6 @@
 package example.domain;
 
-import validationhamcrest.core.State;
+import validation.core.State;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package validationhamcrest.core;
+package validation.core;
 
 public class ErrorId {
 

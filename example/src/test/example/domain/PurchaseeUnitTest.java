@@ -2,7 +2,7 @@ package example.domain;
 
 import org.hamcrest.Matchers;
 import org.junit.Test;
-import validationhamcrest.core.Field;
+import validation.core.Field;
 
 import static org.junit.Assert.assertThat;
 
