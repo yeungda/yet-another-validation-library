@@ -1,6 +1,5 @@
-package example;
+package validation.example;
 
-import org.hamcrest.Matchers;
 import org.junit.Test;
 
 import java.util.ArrayList;

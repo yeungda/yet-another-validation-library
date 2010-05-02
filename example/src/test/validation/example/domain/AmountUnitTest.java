@@ -1,4 +1,4 @@
-package example.domain;
+package validation.example.domain;
 
 import org.junit.Test;
 import validation.core.Field;

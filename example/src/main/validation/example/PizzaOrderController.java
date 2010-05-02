@@ -1,7 +1,7 @@
-package example;
+package validation.example;
 
-import example.domain.PizzaOrder;
-import example.domain.States;
+import validation.example.domain.PizzaOrder;
+import validation.example.domain.States;
 import validation.core.Validator;
 
 import java.io.IOException;

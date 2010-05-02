@@ -1,8 +1,8 @@
-package example;
+package validation.example;
 
-import example.domain.Amount;
-import example.domain.PizzaOrder;
-import example.domain.Purchasee;
+import validation.example.domain.Amount;
+import validation.example.domain.PizzaOrder;
+import validation.example.domain.Purchasee;
 import org.junit.Before;
 import org.junit.Test;
 import validation.core.Field;

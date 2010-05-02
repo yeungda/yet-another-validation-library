@@ -1,32 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager" verified="true">
-    <list default="true" id="53b36430-9a62-42c5-91ae-91003090a259" name="Default" comment="fixed module dependencies">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/src/main/example/domain/PizzaState.java" afterPath="$PROJECT_DIR$/example/src/main/example/domain/PizzaState.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/src/main/example/domain/Purchasee.java" afterPath="$PROJECT_DIR$/example/src/main/example/domain/Purchasee.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/src/main/example/domain/States.java" afterPath="$PROJECT_DIR$/example/src/main/example/domain/States.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/core/src/main/validationhamcrest/core/Validate.java" afterPath="$PROJECT_DIR$/core/src/main/validation/core/Validate.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/src/main/example/ModelMapErrorMessageWriter.java" afterPath="$PROJECT_DIR$/example/src/main/example/ModelMapErrorMessageWriter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/core/src/test/validationhamcrest/core/TestingMatchers.java" afterPath="$PROJECT_DIR$/core/src/test/validation/core/TestingMatchers.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/src/main/example/PizzaOrderController.java" afterPath="$PROJECT_DIR$/example/src/main/example/PizzaOrderController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/src/main/example/domain/PizzaOrder.java" afterPath="$PROJECT_DIR$/example/src/main/example/domain/PizzaOrder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/src/main/example/domain/Amount.java" afterPath="$PROJECT_DIR$/example/src/main/example/domain/Amount.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/validation.iml" afterPath="$PROJECT_DIR$/validation.iml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/core/src/main/validationhamcrest/core/Field.java" afterPath="$PROJECT_DIR$/core/src/main/validation/core/Field.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/core/src/test/validationhamcrest/library/ValidationMatchersUnitTest.java" afterPath="$PROJECT_DIR$/core/src/test/validation/library/ValidationMatchersUnitTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/example.iml" afterPath="$PROJECT_DIR$/example/example.iml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/core/src/test/validationhamcrest/core/ValidatorUnitTest.java" afterPath="$PROJECT_DIR$/core/src/test/validation/core/ValidatorUnitTest.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/core/src/main/validationhamcrest/library/ValidationMatchers.java" afterPath="$PROJECT_DIR$/core/src/main/validation/library/ValidationMatchers.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/src/test/example/domain/AmountUnitTest.java" afterPath="$PROJECT_DIR$/example/src/test/example/domain/AmountUnitTest.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/core/src/main/validationhamcrest/core/ErrorMessageWriter.java" afterPath="$PROJECT_DIR$/core/src/main/validation/core/ErrorMessageWriter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/src/test/example/domain/PurchaseeUnitTest.java" afterPath="$PROJECT_DIR$/example/src/test/example/domain/PurchaseeUnitTest.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/core/src/main/validationhamcrest/core/Validator.java" afterPath="$PROJECT_DIR$/core/src/main/validation/core/Validator.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/core/src/main/validationhamcrest/core/ErrorId.java" afterPath="$PROJECT_DIR$/core/src/main/validation/core/ErrorId.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/main/validationhamcrest/core/State.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/core/src/main/validationhamcrest/core/ValidationError.java" afterPath="$PROJECT_DIR$/core/src/main/validation/core/ValidationError.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/main/validation/core/State.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/src/test/example/PizzaOrderControllerFunctionalTest.java" afterPath="$PROJECT_DIR$/example/src/test/example/PizzaOrderControllerFunctionalTest.java" />
+    <list default="true" id="53b36430-9a62-42c5-91ae-91003090a259" name="Default" comment="">
+      <change type="MOVED" beforePath="$PROJECT_DIR$/example/src/main/example/domain/States.java" afterPath="$PROJECT_DIR$/example/src/main/validation/example/domain/States.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/example/src/test/example/domain/PurchaseeUnitTest.java" afterPath="$PROJECT_DIR$/example/src/test/validation/example/domain/PurchaseeUnitTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/example/src/test/example/ModelMapErrorMessageWriterUnitTest.java" afterPath="$PROJECT_DIR$/example/src/test/validation/example/ModelMapErrorMessageWriterUnitTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/example/src/test/example/PizzaOrderControllerFunctionalTest.java" afterPath="$PROJECT_DIR$/example/src/test/validation/example/PizzaOrderControllerFunctionalTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/example/src/main/example/PizzaOrderController.java" afterPath="$PROJECT_DIR$/example/src/main/validation/example/PizzaOrderController.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/example/src/main/example/domain/PizzaOrder.java" afterPath="$PROJECT_DIR$/example/src/main/validation/example/domain/PizzaOrder.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/example/src/test/example/domain/AmountUnitTest.java" afterPath="$PROJECT_DIR$/example/src/test/validation/example/domain/AmountUnitTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/example/src/main/example/domain/PizzaState.java" afterPath="$PROJECT_DIR$/example/src/main/validation/example/domain/PizzaState.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/example/src/main/example/domain/Purchasee.java" afterPath="$PROJECT_DIR$/example/src/main/validation/example/domain/Purchasee.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/example/src/main/example/domain/Amount.java" afterPath="$PROJECT_DIR$/example/src/main/validation/example/domain/Amount.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/example/src/main/example/test.properties" afterPath="$PROJECT_DIR$/example/src/main/validation/example/test.properties" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/example/src/main/example/ModelMapErrorMessageWriter.java" afterPath="$PROJECT_DIR$/example/src/main/validation/example/ModelMapErrorMessageWriter.java" />
     </list>
     <ignored path=".idea/workspace.xml" />
     <ignored path="validation.iws" />
@@ -113,18 +100,18 @@
         </entry>
       </file>
       <file leaf-file-name="AmountUnitTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/example/src/test/example/domain/AmountUnitTest.java">
+        <entry file="file://$PROJECT_DIR$/example/src/test/validation/example/domain/AmountUnitTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="6" selection-start="199" selection-end="199" vertical-scroll-proportion="0.0">
+            <state line="8" column="6" selection-start="210" selection-end="210" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="Amount.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/example/src/main/example/domain/Amount.java">
+        <entry file="file://$PROJECT_DIR$/example/src/main/validation/example/domain/Amount.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="22" selection-start="390" selection-end="390" vertical-scroll-proportion="0.0">
+            <state line="16" column="22" selection-start="401" selection-end="401" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -133,9 +120,9 @@
         </entry>
       </file>
       <file leaf-file-name="Purchasee.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/example/src/main/example/domain/Purchasee.java">
+        <entry file="file://$PROJECT_DIR$/example/src/main/validation/example/domain/Purchasee.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="32" selection-start="306" selection-end="306" vertical-scroll-proportion="0.47659576">
+            <state line="14" column="32" selection-start="317" selection-end="317" vertical-scroll-proportion="0.47659576">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -162,8 +149,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/example/domain/Amount.java" />
-        <option value="$PROJECT_DIR$/test/validation/core/ValidatorUnitTest.java" />
         <option value="$PROJECT_DIR$/src/example/Controller.java" />
         <option value="$PROJECT_DIR$/test/example/domain/States.java" />
         <option value="$PROJECT_DIR$/src/example/domain/Purchasee.java" />
@@ -177,7 +162,9 @@
         <option value="$PROJECT_DIR$/core/src/main/validation/core/Validator.java" />
         <option value="$PROJECT_DIR$/core/src/main/validation/core/Field.java" />
         <option value="$PROJECT_DIR$/example/src/test/example/domain/AmountUnitTest.java" />
+        <option value="$PROJECT_DIR$/example/src/main/validation/example/domain/example/domain/Purchasee.java" />
         <option value="$PROJECT_DIR$/example/src/main/example/domain/Purchasee.java" />
+        <option value="$PROJECT_DIR$/example/src/main/validation/example/domain/Purchasee.java" />
       </list>
     </option>
   </component>
@@ -234,6 +221,96 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="validation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="validation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="example" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="validation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="validation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="example" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="validation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="validation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="validation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="validation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="validation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="validation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="core" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="validation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Favorites" />
@@ -284,11 +361,11 @@
       <recent name="" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="validation" />
+      <recent name="validation.example.domain" />
       <recent name="example.domain" />
       <recent name="validation.core" />
       <recent name="domain" />
-      <recent name="validation.library" />
-      <recent name="validation" />
     </key>
   </component>
   <component name="RunManager" selected="JUnit.All in validation">
@@ -565,7 +642,7 @@
     <option name="PERFORM_ROLLBACK_IN_BACKGROUND" value="false" />
     <option name="CHECK_LOCALLY_CHANGED_CONFLICTS_IN_BACKGROUND" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="split into core and example modules in preparation for release" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed module dependencies" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -593,6 +670,7 @@
     <MESSAGE value="reduced duplication of dependency declaration by allowing chaining of the validateThat method.  Moved PizzaOrder and members to domain package." />
     <MESSAGE value="added States to avoid generics hell in future unit tests.  small renamings and reorderings." />
     <MESSAGE value="split into core and example modules in preparation for release" />
+    <MESSAGE value="fixed module dependencies" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -602,7 +680,7 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/example/src/test/example/PizzaOrderControllerFunctionalTest.java">
+    <entry file="file://$PROJECT_DIR$/example/src/test/validation/example/PizzaOrderControllerFunctionalTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="49" column="8" selection-start="1867" selection-end="1867" vertical-scroll-proportion="0.0">
           <folding>
@@ -611,14 +689,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/example/src/main/example/ModelMapErrorMessageWriter.java">
+    <entry file="file://$PROJECT_DIR$/example/src/main/validation/example/ModelMapErrorMessageWriter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="10" column="13" selection-start="216" selection-end="216" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/example/src/test/example/domain/PurchaseeUnitTest.java">
+    <entry file="file://$PROJECT_DIR$/example/src/test/validation/example/domain/PurchaseeUnitTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="8" selection-start="374" selection-end="374" vertical-scroll-proportion="0.0">
           <folding>
@@ -627,7 +705,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/example/src/main/example/test.properties">
+    <entry file="file://$PROJECT_DIR$/example/src/main/validation/example/test.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="9" selection-start="119" selection-end="119" vertical-scroll-proportion="0.0">
           <folding />
@@ -641,7 +719,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/example/src/main/example/domain/PizzaOrder.java">
+    <entry file="file://$PROJECT_DIR$/example/src/main/validation/example/domain/PizzaOrder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="20" column="33" selection-start="450" selection-end="450" vertical-scroll-proportion="0.0">
           <folding>
@@ -650,14 +728,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/example/src/main/example/domain/States.java">
+    <entry file="file://$PROJECT_DIR$/example/src/main/validation/example/domain/States.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="7" selection-start="92" selection-end="92" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/example/src/main/example/PizzaOrderController.java">
+    <entry file="file://$PROJECT_DIR$/example/src/main/validation/example/PizzaOrderController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="26" column="8" selection-start="732" selection-end="732" vertical-scroll-proportion="0.0">
           <folding>
@@ -698,16 +776,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/example/src/test/example/domain/AmountUnitTest.java">
+    <entry file="file://$PROJECT_DIR$/example/src/test/validation/example/domain/AmountUnitTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="6" selection-start="199" selection-end="199" vertical-scroll-proportion="0.0">
+        <state line="8" column="6" selection-start="210" selection-end="210" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/example/src/main/example/domain/Amount.java">
+    <entry file="file://$PROJECT_DIR$/example/src/main/validation/example/domain/Amount.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="22" selection-start="390" selection-end="390" vertical-scroll-proportion="0.0">
+        <state line="16" column="22" selection-start="401" selection-end="401" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -721,9 +799,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/example/src/main/example/domain/Purchasee.java">
+    <entry file="file://$PROJECT_DIR$/example/src/main/validation/example/domain/Purchasee.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="32" selection-start="306" selection-end="306" vertical-scroll-proportion="0.47659576">
+        <state line="14" column="32" selection-start="317" selection-end="317" vertical-scroll-proportion="0.47659576">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

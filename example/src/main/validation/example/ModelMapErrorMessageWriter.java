@@ -1,4 +1,4 @@
-package example;
+package validation.example;
 
 import validation.core.ErrorMessageWriter;
 
