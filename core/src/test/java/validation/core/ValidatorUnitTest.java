@@ -38,7 +38,7 @@ public class ValidatorUnitTest {
 
     @Test
     public void shouldValidateNoFields() {
-        assertThat(reportOf(new Validator()).values(), hasSize(0));
+        assertThat(reportOf(new Validator()), hasSize(0));
     }
 
     @Test
@@ -51,7 +51,7 @@ public class ValidatorUnitTest {
                 )
         );
         assertThat(validating(FIELD, isAlwaysPerfect(), isNeverGoodEnough()), hasEntry("field", "never good enough"));
-        assertThat(validating(FIELD, isAlwaysPerfect()).values(), hasSize(0));
+        assertThat(validating(FIELD, isAlwaysPerfect()), hasSize(0));
     }
 
     @Test
@@ -70,14 +70,14 @@ public class ValidatorUnitTest {
     public void shouldIgnoreValidationThatDependsOnAnUnknownState() {
         validator.addStates(Collections.EMPTY_LIST);
         validator.whenApplicableStates(hasItem(TestingStates.BOX_IS_TICKED)).validateThat(new Field("amount", ""), isNeverGoodEnough());
-        assertThat(reportOf(validator).values(), Matchers.hasSize(0));
+        assertThat(reportOf(validator), hasSize(0));
     }
 
     @Test
     public void shouldApplyValidationThatDependsOnAKnownState() {
         validator.addStates(Arrays.asList(TestingStates.BOX_IS_TICKED));
         validator.whenApplicableStates(hasItem(TestingStates.BOX_IS_TICKED)).validateThat(new Field("amount", ""), isNeverGoodEnough());
-        assertThat(reportOf(validator).values(), Matchers.hasSize(1));
+        assertThat(reportOf(validator), hasSize(1));
     }
 
     @Test
@@ -85,7 +85,7 @@ public class ValidatorUnitTest {
         final Validator validator = new Validator();
         validator.addStates(Arrays.asList(TestingStates.BOX_IS_TICKED, TestingStates.SUM_IS_PROVIDED));
         validator.whenApplicableStates(allOf(hasItem(TestingStates.BOX_IS_TICKED), hasItem(TestingStates.SUM_IS_PROVIDED))).validateThat(new Field("amount", ""), isNeverGoodEnough());
-        assertThat(reportOf(validator).values(), Matchers.hasSize(1));
+        assertThat(reportOf(validator), hasSize(1));
     }
 
     @Test
@@ -94,7 +94,7 @@ public class ValidatorUnitTest {
         validator.whenApplicableStates(hasItem(TestingStates.BOX_IS_TICKED))
                 .validateThat(new Field("amount", ""), isNeverGoodEnough())
                 .validateThat(new Field("another", ""), isNeverGoodEnough());
-        assertThat(reportOf(validator).values(), Matchers.hasSize(2));
+        assertThat(reportOf(validator), hasSize(2));
     }
 
     private Matcher<? extends String> isNeverGoodEnoughForOtherReasons() {
@@ -141,12 +141,30 @@ public class ValidatorUnitTest {
         return reportOf(validator);
     }
 
-
     private Map<String, String> reportOf(Validator validator) {
         final HashMap<String, String> errors = new HashMap<String, String>();
         final MapErrorMessageWriter messageWriter = new MapErrorMessageWriter(errors);
         validator.describeErrorsTo(messageWriter);
         return errors;
+    }
+
+
+    private static TypeSafeMatcher<Map<String, String>> hasSize(final int size) {
+        // this only exists because intellij is giving me type incompatible errors
+        // for Matchers.hasSize(x);
+        // of the nature
+        // java.util.Collection(String) cannot be applied to org.hamcrest.Matcher<capture<? super java.util.Collection<? extends Object>>>
+        return new TypeSafeMatcher<Map<String, String>>() {
+            @Override
+            public boolean matchesSafely(Map<String, String> stringStringMap) {
+                return Matchers.hasSize(size).matches(stringStringMap.values());
+            }
+
+            @Override
+            public void describeTo(Description description) {
+                Matchers.hasSize(size).describeTo(description);
+            }
+        };
     }
 
     @Before
