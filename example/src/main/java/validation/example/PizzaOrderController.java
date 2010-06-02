@@ -16,6 +16,7 @@
 
 package validation.example;
 
+import validation.core.States;
 import validation.core.Validator;
 import validation.example.domain.PizzaOrder;
 
@@ -38,7 +39,7 @@ public class PizzaOrderController {
     }
 
     public Map validate(PizzaOrder pizzaOrder) {
-        final validation.core.States states = new validation.core.States();
+        final States states = new States();
         pizzaOrder.describeTo(states);
 
         final Validator validator = new Validator();
