@@ -25,35 +25,46 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class StateGraph {
+public class States {
     private Set<State> nodes = new HashSet<State>();
     private Set<State> nodesWithIncomingEdges = new HashSet<State>();
     private Map<State, Set<State>> edges = new HashMap<State, Set<State>>();
 
-
-    public AStateThat has(State state) {
+    public AStateThat add(State state) {
         this.nodes.add(state);
         return new AStateThat(state);
     }
 
-    public void resolveApplicable(List<State> resolvedStates) {
-        ArrayList<State> sortedNodes = new ArrayList<State>();
-        topologicalSort(sortedNodes);
-        for (State sortedNode : sortedNodes) {
-            if (nodes.contains(sortedNode) && resolvedStates.containsAll(getEdges(sortedNode))) {
-                resolvedStates.add(sortedNode);
+    public void describeApplicableTo(List<State> applicableStates) {
+        for (State state : findTopologicallySortedStates()) {
+            if (isApplicable(state, applicableStates)) {
+                applicableStates.add(state);
             }
         }
     }
 
+    private ArrayList<State> findTopologicallySortedStates() {
+        ArrayList<State> sortedStates = new ArrayList<State>();
+        topologicalSort(sortedStates);
+        return sortedStates;
+    }
+
+    private boolean isApplicable(State sortedNode, List<State> resolvedStates) {
+        return nodes.contains(sortedNode) && resolvedStates.containsAll(getEdges(sortedNode));
+    }
+
     private void topologicalSort(ArrayList<State> sortedNodes) {
+        final ArrayList<State> visited = new ArrayList<State>();
+        for (State nodeWithNoIncomingEdges : findNodesWithNoIncomingEdges()) {
+            visit(nodeWithNoIncomingEdges, visited, sortedNodes);
+        }
+    }
+
+    private HashSet<State> findNodesWithNoIncomingEdges() {
         final HashSet<State> nodesWithNoIncomingEdges = new HashSet<State>();
         nodesWithNoIncomingEdges.addAll(nodes);
         nodesWithNoIncomingEdges.removeAll(nodesWithIncomingEdges);
-        final ArrayList<State> visited = new ArrayList<State>();
-        for (State nodeWithNoIncomingEdges : nodesWithNoIncomingEdges) {
-            visit(nodeWithNoIncomingEdges, visited, sortedNodes);
-        }
+        return nodesWithNoIncomingEdges;
     }
 
     private void visit(State node, ArrayList<State> visited, ArrayList<State> sortedNodes) {
@@ -77,12 +88,14 @@ public class StateGraph {
             final Set<State> edgesForNode = getEdges(state);
             edgesForNode.add(dependency);
             edges.put(this.state, edgesForNode);
-
             nodesWithIncomingEdges.add(dependency);
             return this;
         }
 
         public AStateThat when(Field field, Matcher<String> stringMatcher) {
+            if (!field.matches(stringMatcher)) {
+                nodes.remove(this.state);
+            }
             return this;
         }
     }

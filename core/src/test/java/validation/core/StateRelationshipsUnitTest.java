@@ -23,6 +23,8 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertThat;
 import static validation.core.StateRelationships.dependedOnBy;
 import static validation.core.TestingStates.*;
@@ -94,45 +96,6 @@ public class StateRelationshipsUnitTest {
         final ArrayList<TestingStates> activeStates = new ArrayList<TestingStates>();
         relationships.resolveInto(Arrays.asList(potentialStates), activeStates);
         return activeStates;
-    }
-
-    public static class StateGraphUnitTest {
-        private StateGraph stateGraph;
-
-        @Test
-        public void notResolveUnknownState() {
-            assertThat(resolvingApplicableStatesFor(stateGraph), Matchers.<State>emptyIterable());
-        }
-
-        @Test
-        public void resolveNoDependency() {
-            stateGraph.has(A);
-            assertThat(resolvingApplicableStatesFor(stateGraph), Matchers.<State>containsInAnyOrder(A));
-        }
-
-        @Test
-        public void notResolveUnsatisfiedSingleDependency() {
-            stateGraph.has(A).dependsOn(B);
-            assertThat(resolvingApplicableStatesFor(stateGraph), Matchers.<State>emptyIterable());
-        }
-
-        @Test
-        public void resolveSingleDependency() {
-            stateGraph.has(A).dependsOn(B);
-            stateGraph.has(B);
-            assertThat(resolvingApplicableStatesFor(stateGraph), Matchers.<State>containsInAnyOrder(A, B));
-        }
-
-        private ArrayList<State> resolvingApplicableStatesFor(StateGraph stateGraph) {
-            final ArrayList<State> list = new ArrayList<State>();
-            stateGraph.resolveApplicable(list);
-            return list;
-        }
-
-        @Before
-        public void setUp() throws Exception {
-            stateGraph = new StateGraph();
-        }
     }
 
 }

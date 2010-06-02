@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager" verified="true">
     <list default="true" id="53b36430-9a62-42c5-91ae-91003090a259" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/test/java/validation/core/StateRelationshipsUnitTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/test/java/validation/core/TestingStates.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/test/java/validation/core/ValidatorUnitTest.java" afterPath="$PROJECT_DIR$/core/src/test/java/validation/core/ValidatorUnitTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/main/java/validation/core/StateRelationships.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/main/java/validation/core/StateGraph.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/test/java/validation/core/StateGraphUnitTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/core/src/main/java/validation/core/StateGraph.java" afterPath="$PROJECT_DIR$/core/src/main/java/validation/core/States.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/test/java/validation/core/StateRelationshipsUnitTest.java" afterPath="$PROJECT_DIR$/core/src/test/java/validation/core/StateRelationshipsUnitTest.java" />
     </list>
     <ignored path="validation.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -70,7 +68,7 @@
       <file leaf-file-name="StateRelationshipsUnitTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/test/java/validation/core/StateRelationshipsUnitTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="127" column="33" selection-start="4484" selection-end="4484" vertical-scroll-proportion="0.0">
+            <state line="100" column="0" selection-start="3437" selection-end="3437" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -78,19 +76,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StateGraph.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/core/src/main/java/validation/core/StateGraph.java">
+      <file leaf-file-name="StateGraphUnitTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/test/java/validation/core/StateGraphUnitTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="12" selection-start="1039" selection-end="1039" vertical-scroll-proportion="0.13617021">
+            <state line="88" column="23" selection-start="2893" selection-end="2893" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PizzaOrderController.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/example/src/main/java/validation/example/PizzaOrderController.java">
+      <file leaf-file-name="States.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/core/src/main/java/validation/core/States.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="28" selection-start="1435" selection-end="1435" vertical-scroll-proportion="0.0">
+            <state line="27" column="19" selection-start="812" selection-end="818" vertical-scroll-proportion="0.20425531">
               <folding />
             </state>
           </provider>
@@ -124,8 +122,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/README.markdown" />
-        <option value="$PROJECT_DIR$/../coffeescript-rhino/build.xml" />
         <option value="$PROJECT_DIR$/NOTICE" />
         <option value="$PROJECT_DIR$/example/src/test/java/validation/example/domain/AmountUnitTest.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/validation/core/Validate.java" />
@@ -139,7 +135,9 @@
         <option value="$PROJECT_DIR$/example/src/main/java/validation/example/domain/Purchasee.java" />
         <option value="$PROJECT_DIR$/core/src/test/java/validation/core/StateGraph.java" />
         <option value="$PROJECT_DIR$/core/src/test/java/validation/core/StateRelationshipsUnitTest.java" />
+        <option value="$PROJECT_DIR$/core/src/test/java/validation/core/StateGraphUnitTest.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/validation/core/StateGraph.java" />
+        <option value="$PROJECT_DIR$/core/src/main/java/validation/core/States.java" />
       </list>
     </option>
   </component>
@@ -704,7 +702,7 @@
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="ToolWindowManager">
     <frame x="9" y="22" width="1431" height="847" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32934928" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -718,7 +716,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24819103" sideWeight="0.6613546" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24819103" sideWeight="0.6613546" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32934928" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -740,7 +738,7 @@
     <option name="PERFORM_ROLLBACK_IN_BACKGROUND" value="false" />
     <option name="CHECK_LOCALLY_CHANGED_CONFLICTS_IN_BACKGROUND" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="formatted the readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="added StateRelationships for resolving state dependencies using a predefined tree.  added StateGraph for resolving state dependencies in a directed acyclic graph format" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -775,6 +773,7 @@
     <MESSAGE value="added apache license 2.0." />
     <MESSAGE value="moved classes into java directories.  added build script to build core." />
     <MESSAGE value="formatted the readme" />
+    <MESSAGE value="added StateRelationships for resolving state dependencies using a predefined tree.  added StateGraph for resolving state dependencies in a directed acyclic graph format" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -792,13 +791,6 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/validation/core/Validate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="4" selection-start="683" selection-end="683" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/main/java/validation/core/State.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="18" column="17" selection-start="638" selection-end="638" vertical-scroll-proportion="0.0">
@@ -894,16 +886,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/core/src/test/java/validation/core/StateRelationshipsUnitTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="127" column="33" selection-start="4484" selection-end="4484" vertical-scroll-proportion="0.0">
+        <state line="100" column="0" selection-start="3437" selection-end="3437" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/java/validation/core/StateGraph.java">
+    <entry file="file://$PROJECT_DIR$/core/src/test/java/validation/core/StateGraphUnitTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="12" selection-start="1039" selection-end="1039" vertical-scroll-proportion="0.13617021">
+        <state line="88" column="23" selection-start="2893" selection-end="2893" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/validation/core/States.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="19" selection-start="812" selection-end="818" vertical-scroll-proportion="0.20425531">
           <folding />
         </state>
       </provider>
