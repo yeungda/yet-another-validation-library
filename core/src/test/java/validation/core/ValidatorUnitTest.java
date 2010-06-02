@@ -24,8 +24,10 @@ import org.junit.Test;
 import org.junit.internal.matchers.TypeSafeMatcher;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static org.hamcrest.CoreMatchers.hasItem;
@@ -154,7 +156,4 @@ public class ValidatorUnitTest {
         validator = new Validator();
     }
 
-    public enum TestingStates implements State {
-        BOX_IS_TICKED, SUM_IS_PROVIDED;
-    }
 }
