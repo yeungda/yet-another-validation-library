@@ -31,7 +31,7 @@ public class Amount {
     }
 
     public void describeTo(Validator validator) {
-        validator.whenStates(hasItem(PizzaState.CUSTOMER))
+        validator.whenApplicableStates(hasItem(PizzaState.CUSTOMER))
                 .validateThat(field, isMandatory())
                 .validateThat(field, isAWholeNumber())
                 .validateThat(field, hasLength(lessThanOrEqualTo(4)));

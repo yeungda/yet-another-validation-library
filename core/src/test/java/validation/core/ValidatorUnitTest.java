@@ -24,10 +24,8 @@ import org.junit.Test;
 import org.junit.internal.matchers.TypeSafeMatcher;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import static org.hamcrest.CoreMatchers.hasItem;
@@ -71,14 +69,14 @@ public class ValidatorUnitTest {
     @Test
     public void shouldIgnoreValidationThatDependsOnAnUnknownState() {
         validator.addStates(Collections.EMPTY_LIST);
-        validator.whenStates(hasItem(TestingStates.BOX_IS_TICKED)).validateThat(new Field("amount", ""), isNeverGoodEnough());
+        validator.whenApplicableStates(hasItem(TestingStates.BOX_IS_TICKED)).validateThat(new Field("amount", ""), isNeverGoodEnough());
         assertThat(reportOf(validator).values(), Matchers.hasSize(0));
     }
 
     @Test
     public void shouldApplyValidationThatDependsOnAKnownState() {
         validator.addStates(Arrays.asList(TestingStates.BOX_IS_TICKED));
-        validator.whenStates(hasItem(TestingStates.BOX_IS_TICKED)).validateThat(new Field("amount", ""), isNeverGoodEnough());
+        validator.whenApplicableStates(hasItem(TestingStates.BOX_IS_TICKED)).validateThat(new Field("amount", ""), isNeverGoodEnough());
         assertThat(reportOf(validator).values(), Matchers.hasSize(1));
     }
 
@@ -86,14 +84,14 @@ public class ValidatorUnitTest {
     public void shouldApplyValidationThatDependsOnManyKnownStates() {
         final Validator validator = new Validator();
         validator.addStates(Arrays.asList(TestingStates.BOX_IS_TICKED, TestingStates.SUM_IS_PROVIDED));
-        validator.whenStates(allOf(hasItem(TestingStates.BOX_IS_TICKED), hasItem(TestingStates.SUM_IS_PROVIDED))).validateThat(new Field("amount", ""), isNeverGoodEnough());
+        validator.whenApplicableStates(allOf(hasItem(TestingStates.BOX_IS_TICKED), hasItem(TestingStates.SUM_IS_PROVIDED))).validateThat(new Field("amount", ""), isNeverGoodEnough());
         assertThat(reportOf(validator).values(), Matchers.hasSize(1));
     }
 
     @Test
     public void shouldApplyManyValidationRulesThatDependOnAKnownState() {
         validator.addStates(Arrays.asList(TestingStates.BOX_IS_TICKED));
-        validator.whenStates(hasItem(TestingStates.BOX_IS_TICKED))
+        validator.whenApplicableStates(hasItem(TestingStates.BOX_IS_TICKED))
                 .validateThat(new Field("amount", ""), isNeverGoodEnough())
                 .validateThat(new Field("another", ""), isNeverGoodEnough());
         assertThat(reportOf(validator).values(), Matchers.hasSize(2));

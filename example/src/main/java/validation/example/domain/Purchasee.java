@@ -17,6 +17,7 @@
 package validation.example.domain;
 
 import validation.core.Field;
+import validation.core.States;
 
 import static org.hamcrest.Matchers.equalTo;
 
@@ -28,8 +29,6 @@ public class Purchasee {
     }
 
     public void describeTo(States states) {
-        if (field.matches(equalTo("customer"))) {
-            states.add(PizzaState.CUSTOMER);
-        }
+        states.add(PizzaState.CUSTOMER).when(field, equalTo("customer"));
     }
 }

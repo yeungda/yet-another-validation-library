@@ -57,7 +57,7 @@ public class Validator implements Validate {
         }
     }
 
-    public <T> Validate whenStates(final Matcher<Iterable<? super T>> statesMatcher) {
+    public <T> Validate whenApplicableStates(final Matcher<Iterable<? super T>> statesMatcher) {
         return new Validate() {
             @Override
             public Validate validateThat(Field field, Matcher<? extends String> matcher) {

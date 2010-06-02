@@ -18,7 +18,6 @@ package validation.example;
 
 import validation.core.Validator;
 import validation.example.domain.PizzaOrder;
-import validation.example.domain.States;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -39,10 +38,11 @@ public class PizzaOrderController {
     }
 
     public Map validate(PizzaOrder pizzaOrder) {
-        final Validator validator = new Validator();
-        final States states = new States();
+        final validation.core.States states = new validation.core.States();
         pizzaOrder.describeTo(states);
-        validator.addStates(states);
+
+        final Validator validator = new Validator();
+        states.describeApplicableTo(validator);
         pizzaOrder.describeTo(validator);
 
         final ModelMapErrorMessageWriter errorMessageWriter = new ModelMapErrorMessageWriter(properties);

@@ -20,5 +20,5 @@ import validation.core.State;
 
 import java.util.ArrayList;
 
-public class States extends ArrayList<State> {
+public class OldStates extends ArrayList<State> {
 }

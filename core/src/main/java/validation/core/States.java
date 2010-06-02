@@ -77,6 +77,12 @@ public class States {
         }
     }
 
+    public void describeApplicableTo(Validator validator) {
+        final ArrayList<State> applicableStates = new ArrayList<State>();
+        describeApplicableTo(applicableStates);
+        validator.addStates(applicableStates);
+    }
+
     public class AStateThat {
         private final State state;
 

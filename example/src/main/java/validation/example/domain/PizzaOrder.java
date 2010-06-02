@@ -16,6 +16,7 @@
 
 package validation.example.domain;
 
+import validation.core.States;
 import validation.core.Validator;
 
 public class PizzaOrder {
