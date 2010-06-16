@@ -16,17 +16,18 @@
   ~ limitations under the License.
   -->
 
-<project name="yet-another-validation-library-core" default="all">
+<project name="yet-another-validation-library-example" default="all">
 
     <target name="all" depends="bootstrap, clean, dependencies, compile, test, jar"/>
 
-    <target name="build">
-        <echo message="running webcons-backend build target placeholder"/>
-    </target>
+    <target name="dependencies"/>
 
     <path id="compile.classpath">
         <fileset dir="${basedir}/../lib">
             <include name="hamcrest-all-1.3RC0.jar"/>
+        </fileset>
+        <fileset dir="${basedir}/../core/target/dist">
+            <include name="yet-another-validation-library-core.jar"/>
         </fileset>
     </path>
 
@@ -37,14 +38,16 @@
         <fileset dir="${basedir}/../lib/junit/4.8.2">
             <include name="junit-dep-4.8.2.jar"/>
         </fileset>
+        <fileset dir="${basedir}/../core/target/dist">
+            <include name="yet-another-validation-library-core.jar"/>
+        </fileset>
         <path path="${basedir}/target/classes/main"/>
     </path>
 
-    <property name="ivy.module" value="yet-another-validation-library-core"/>
+    <property name="ivy.module" value="yet-another-validation-library-example"/>
     <import file="${basedir}/../conf/build/build-bootstrap.xml"/>
     <import file="${basedir}/../conf/build/build-clean.xml"/>
     <!--<import file="${basedir}/../conf/build/build-ivy.xml"/>-->
-    <target name="dependencies"/>
     <import file="${basedir}/../conf/build/build-compile.xml"/>
     <import file="${basedir}/../conf/build/build-test.xml"/>
     <import file="${basedir}/../conf/build/build-jar.xml"/>

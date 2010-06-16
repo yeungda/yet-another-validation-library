@@ -35,7 +35,15 @@ public class Field {
         errorId.setFieldName(name);
     }
 
-    public boolean matches(Matcher<? extends String> matcher) {
+    public boolean matches(Matcher<? super String> matcher) {
         return matcher.matches(value);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getValue() {
+        return value;
     }
 }

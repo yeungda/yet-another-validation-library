@@ -28,7 +28,7 @@ public class Validator implements Validate {
     private Collection<State> states = new ArrayList<State>(10);
 
     @Override
-    public Validate validateThat(Field field, Matcher<? extends String> matcher) {
+    public Validate validateThat(Field field, Matcher<? super String> matcher) {
         final ErrorId errorId = new ErrorId();
         field.describeTo(errorId);
         if (hasNoRecordedErrorFor(errorId) && !field.matches(matcher)) {
@@ -38,7 +38,7 @@ public class Validator implements Validate {
         return this;
     }
 
-    private ValidationError createValidationError(Field field, Matcher<? extends String> matcher) {
+    private ValidationError createValidationError(Field field, Matcher<? super String> matcher) {
         final ValidationError validationError = new ValidationError();
         field.describeTo(validationError);
         final StringDescription stringDescription = new StringDescription();
@@ -60,7 +60,7 @@ public class Validator implements Validate {
     public <T> Validate whenApplicableStates(final Matcher<Iterable<? super T>> statesMatcher) {
         return new Validate() {
             @Override
-            public Validate validateThat(Field field, Matcher<? extends String> matcher) {
+            public Validate validateThat(Field field, Matcher<? super String> matcher) {
                 if (statesMatcher.matches(states)) {
                     Validator.this.validateThat(field, matcher);
                 }

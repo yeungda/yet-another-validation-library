@@ -1,3 +1,4 @@
 core/target/
+example/target/
 out/
 .DS_Store

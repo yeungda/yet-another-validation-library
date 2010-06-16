@@ -16,26 +16,33 @@
 
 package validation.example.domain;
 
+import validation.core.Field;
 import validation.core.States;
 import validation.core.Validator;
+import validation.example.domain.LoginState;
+import validation.library.ValidationMatchers;
 
-public class PizzaOrder {
-    private Amount amount;
-    private Purchasee purchasee;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.hasItem;
+import static org.hamcrest.Matchers.not;
 
-    public void setAmount(Amount amount) {
-        this.amount = amount;
+public class Login {
+    private Field userName;
+    private Field password;
+
+    public void setUserName(Field userName) {
+        this.userName = userName;
+    }
+
+    public void setPassword(Field password) {
+        this.password = password;
     }
 
     public void describeTo(Validator validator) {
-        amount.describeTo(validator);
-    }
-
-    public void setPurchasee(Purchasee purchasee) {
-        this.purchasee = purchasee;
+        validator.whenApplicableStates(hasItem(LoginState.AUTHENTICATED)).validateThat(password, ValidationMatchers.isMandatory());
     }
 
     public void describeTo(States states) {
-        purchasee.describeTo(states);
+        states.add(LoginState.AUTHENTICATED).when(userName, not(equalTo("anonymous coward")));
     }
 }

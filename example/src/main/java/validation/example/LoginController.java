@@ -18,7 +18,7 @@ package validation.example;
 
 import validation.core.States;
 import validation.core.Validator;
-import validation.example.domain.PizzaOrder;
+import validation.example.domain.Login;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,10 +26,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
-public class PizzaOrderController {
+public class LoginController {
     private final Properties properties;
 
-    public PizzaOrderController() {
+    public LoginController() {
         this.properties = new Properties();
         try {
             properties.load(getClass().getClassLoader().getResourceAsStream("validation/example/test.properties"));
@@ -38,13 +38,13 @@ public class PizzaOrderController {
         }
     }
 
-    public Map validate(PizzaOrder pizzaOrder) {
+    public Map validate(Login login) {
         final States states = new States();
-        pizzaOrder.describeTo(states);
+        login.describeTo(states);
 
         final Validator validator = new Validator();
         states.describeApplicableTo(validator);
-        pizzaOrder.describeTo(validator);
+        login.describeTo(validator);
 
         final ModelMapErrorMessageWriter errorMessageWriter = new ModelMapErrorMessageWriter(properties);
         validator.describeErrorsTo(errorMessageWriter);

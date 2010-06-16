@@ -97,11 +97,11 @@ public class ValidatorUnitTest {
         assertThat(reportOf(validator), hasSize(2));
     }
 
-    private Matcher<? extends String> isNeverGoodEnoughForOtherReasons() {
+    private Matcher<? super String> isNeverGoodEnoughForOtherReasons() {
         return isNeverGoodEnoughBecause("other reasons");
     }
 
-    private Matcher<? extends String> isAlwaysPerfect() {
+    private Matcher<? super String> isAlwaysPerfect() {
         return new TypeSafeMatcher<String>() {
             @Override
             public boolean matchesSafely(String s) {
@@ -115,7 +115,7 @@ public class ValidatorUnitTest {
         };
     }
 
-    private Matcher<? extends String> isNeverGoodEnough() {
+    private Matcher<? super String> isNeverGoodEnough() {
         return isNeverGoodEnoughBecause("never good enough");
     }
 
@@ -133,9 +133,9 @@ public class ValidatorUnitTest {
         };
     }
 
-    private Map<String, String> validating(Field field, Matcher<? extends String>... matchers) {
+    private Map<String, String> validating(Field field, Matcher<? super String>... matchers) {
         Validator validator = new Validator();
-        for (Matcher<? extends String> matcher : matchers) {
+        for (Matcher<? super String> matcher : matchers) {
             validator.validateThat(field, matcher);
         }
         return reportOf(validator);
