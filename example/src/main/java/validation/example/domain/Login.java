@@ -19,7 +19,6 @@ package validation.example.domain;
 import validation.core.Field;
 import validation.core.States;
 import validation.core.Validator;
-import validation.example.domain.LoginState;
 import validation.library.ValidationMatchers;
 
 import static org.hamcrest.Matchers.equalTo;
@@ -39,10 +38,14 @@ public class Login {
     }
 
     public void describeTo(Validator validator) {
-        validator.whenApplicableStates(hasItem(LoginState.AUTHENTICATED)).validateThat(password, ValidationMatchers.isMandatory());
+        validator.whenApplicableStates(hasItem(State.AUTHENTICATED)).validateThat(password, ValidationMatchers.isMandatory());
     }
 
     public void describeTo(States states) {
-        states.add(LoginState.AUTHENTICATED).when(userName, not(equalTo("anonymous coward")));
+        states.add(State.AUTHENTICATED).when(userName, not(equalTo("anonymous coward")));
+    }
+
+    public static enum State implements validation.core.State {
+        AUTHENTICATED, CUSTOMER
     }
 }
