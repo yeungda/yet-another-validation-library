@@ -17,30 +17,18 @@
 package validation.example.domain;
 
 import validation.core.States;
-import validation.core.Validator;
 
-public class Login {
-    private UserName userName;
-    private Password password;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.not;
 
-    public void setUserName(UserName userName) {
-        this.userName = userName;
-    }
+public class UserName {
+    public final Field field;
 
-    public void setPassword(Password password) {
-        this.password = password;
-    }
-
-    public void describeTo(Validator validator) {
-        password.describeTo(validator);
+    public UserName(Field field) {
+        this.field = field;
     }
 
     public void describeTo(States states) {
-        userName.describeTo(states);
+        states.add(Login.State.AUTHENTICATED).when(field, not(equalTo("anonymous coward")));
     }
-
-    public static enum State implements validation.core.State {
-        AUTHENTICATED
-    }
-
 }

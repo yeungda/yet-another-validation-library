@@ -23,7 +23,7 @@
     <target name="dependencies"/>
 
     <path id="compile.classpath">
-        <fileset dir="${basedir}/../lib">
+        <fileset dir="${basedir}/../lib/hamcrest/1.3RC0">
             <include name="hamcrest-all-1.3RC0.jar"/>
         </fileset>
         <fileset dir="${basedir}/../core/target/dist">
@@ -32,7 +32,7 @@
     </path>
 
     <path id="test.classpath">
-        <fileset dir="${basedir}/../lib">
+        <fileset dir="${basedir}/../lib/hamcrest/1.3RC0">
             <include name="hamcrest-all-1.3RC0.jar"/>
         </fileset>
         <fileset dir="${basedir}/../lib/junit/4.8.2">

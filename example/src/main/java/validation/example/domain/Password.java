@@ -16,31 +16,19 @@
 
 package validation.example.domain;
 
-import validation.core.States;
 import validation.core.Validator;
+import validation.library.ValidationMatchers;
 
-public class Login {
-    private UserName userName;
-    private Password password;
+import static org.hamcrest.Matchers.hasItem;
 
-    public void setUserName(UserName userName) {
-        this.userName = userName;
-    }
+public class Password {
+    public final Field field;
 
-    public void setPassword(Password password) {
-        this.password = password;
+    public Password(Field field) {
+        this.field = field;
     }
 
     public void describeTo(Validator validator) {
-        password.describeTo(validator);
+        validator.whenApplicableStates(hasItem(Login.State.AUTHENTICATED)).validateThat(field, ValidationMatchers.isMandatory());
     }
-
-    public void describeTo(States states) {
-        userName.describeTo(states);
-    }
-
-    public static enum State implements validation.core.State {
-        AUTHENTICATED
-    }
-
 }

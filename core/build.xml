@@ -21,13 +21,13 @@
     <target name="build" depends="bootstrap, clean, dependencies, compile, test, jar"/>
 
     <path id="compile.classpath">
-        <fileset dir="${basedir}/../lib">
+        <fileset dir="${basedir}/../lib/hamcrest/1.3RC0">
             <include name="hamcrest-all-1.3RC0.jar"/>
         </fileset>
     </path>
 
     <path id="test.classpath">
-        <fileset dir="${basedir}/../lib">
+        <fileset dir="${basedir}/../lib/hamcrest/1.3RC0">
             <include name="hamcrest-all-1.3RC0.jar"/>
         </fileset>
         <fileset dir="${basedir}/../lib/junit/4.8.2">

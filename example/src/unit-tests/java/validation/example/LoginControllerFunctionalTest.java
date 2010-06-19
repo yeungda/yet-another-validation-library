@@ -20,6 +20,8 @@ import org.junit.Before;
 import org.junit.Test;
 import validation.example.domain.Field;
 import validation.example.domain.Login;
+import validation.example.domain.Password;
+import validation.example.domain.UserName;
 
 import java.util.Collection;
 import java.util.Map;
@@ -40,8 +42,8 @@ public class LoginControllerFunctionalTest {
 
     private Login aLoginOf(String userName, String password) {
         final Login login = new Login();
-        login.setUserName(new Field("userName", userName));
-        login.setPassword(new Field("password", password));
+        login.setUserName(new UserName(new Field("userName", userName)));
+        login.setPassword(new Password(new Field("password", password)));
         return login;
     }
 
