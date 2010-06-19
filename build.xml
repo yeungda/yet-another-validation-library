@@ -16,9 +16,9 @@
   ~ limitations under the License.
   -->
 
-<project name="yet-another-validation-library" default="all">
+<project name="yet-another-validation-library" default="build">
 
-    <target name="all">
+    <target name="build">
         <ant antfile="${basedir}/core/build.xml" dir="${basedir}/core" inheritall="no"/>
         <ant antfile="${basedir}/example/build.xml" dir="${basedir}/example" inheritall="no"/>
     </target>

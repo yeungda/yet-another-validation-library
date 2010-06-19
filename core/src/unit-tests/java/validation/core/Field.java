@@ -16,8 +16,18 @@
 
 package validation.core;
 
-import org.hamcrest.Matcher;
+public class Field implements DescribableField {
+    private final String name;
+    private final String value;
 
-public interface Validate {
-    public Validate validateThat(DescribableField describableField, Matcher<? super String> matcher);
+    public Field(String name, String value) {
+        this.name = name;
+        this.value = value;
+    }
+
+    @Override
+    public void describeTo(FieldDescription fieldDescription) {
+        fieldDescription.setName(name);
+        fieldDescription.setValue(value);
+    }
 }

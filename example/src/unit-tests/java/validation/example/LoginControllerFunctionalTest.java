@@ -18,7 +18,7 @@ package validation.example;
 
 import org.junit.Before;
 import org.junit.Test;
-import validation.core.Field;
+import validation.example.domain.Field;
 import validation.example.domain.Login;
 
 import java.util.Collection;

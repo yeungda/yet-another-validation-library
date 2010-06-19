@@ -16,9 +16,9 @@
   ~ limitations under the License.
   -->
 
-<project name="yet-another-validation-library-example" default="all">
+<project name="example" default="build">
 
-    <target name="all" depends="bootstrap, clean, dependencies, compile, test, jar"/>
+    <target name="build" depends="bootstrap, clean, dependencies, compile, test, jar"/>
 
     <target name="dependencies"/>
 

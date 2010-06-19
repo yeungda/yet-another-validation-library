@@ -98,8 +98,10 @@ public class States {
             return this;
         }
 
-        public AStateThat when(Field field, Matcher<String> stringMatcher) {
-            if (!field.matches(stringMatcher)) {
+        public AStateThat when(DescribableField describableField, Matcher<String> stringMatcher) {
+            final FieldDescription fieldDescription = new FieldDescription();
+            describableField.describeTo(fieldDescription);
+            if (!fieldDescription.matches(stringMatcher)) {
                 nodes.remove(this.state);
             }
             return this;

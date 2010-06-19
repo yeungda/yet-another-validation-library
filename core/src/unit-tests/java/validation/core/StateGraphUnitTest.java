@@ -161,7 +161,7 @@ public class StateGraphUnitTest {
         assertThat(resolvingApplicableStatesFor(states), Matchers.<State>contains(C));
     }
 
-    private Field anyField() {
+    private DescribableField anyField() {
         return new Field("", "");
     }
 

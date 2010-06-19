@@ -16,7 +16,6 @@
 
 package validation.example.domain;
 
-import validation.core.Field;
 import validation.core.States;
 import validation.core.Validator;
 import validation.library.ValidationMatchers;

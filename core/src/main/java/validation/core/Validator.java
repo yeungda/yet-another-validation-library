@@ -28,23 +28,30 @@ public class Validator implements Validate {
     private Collection<State> states = new ArrayList<State>(10);
 
     @Override
-    public Validate validateThat(Field field, Matcher<? super String> matcher) {
+    public Validate validateThat(DescribableField field, Matcher<? super String> matcher) {
+        final FieldDescription fieldDescription = createFieldDescription(field);
         final ErrorId errorId = new ErrorId();
-        field.describeTo(errorId);
-        if (hasNoRecordedErrorFor(errorId) && !field.matches(matcher)) {
+        fieldDescription.describeTo(errorId);
+        if (hasNoRecordedErrorFor(errorId) && !fieldDescription.matches(matcher)) {
             alreadyValidated.add(errorId);
-            validationErrors.add(createValidationError(field, matcher));
+            validationErrors.add(createValidationError(fieldDescription, matcher));
         }
         return this;
     }
 
-    private ValidationError createValidationError(Field field, Matcher<? super String> matcher) {
+    private ValidationError createValidationError(FieldDescription fieldDescription, Matcher<? super String> matcher) {
         final ValidationError validationError = new ValidationError();
-        field.describeTo(validationError);
+        fieldDescription.describeTo(validationError);
         final StringDescription stringDescription = new StringDescription();
         matcher.describeTo(stringDescription);
         validationError.setDescription(stringDescription.toString());
         return validationError;
+    }
+
+    private FieldDescription createFieldDescription(DescribableField describableField) {
+        final FieldDescription fieldDescription = new FieldDescription();
+        describableField.describeTo(fieldDescription);
+        return fieldDescription;
     }
 
     private boolean hasNoRecordedErrorFor(ErrorId errorId) {
@@ -60,9 +67,9 @@ public class Validator implements Validate {
     public <T> Validate whenApplicableStates(final Matcher<Iterable<? super T>> statesMatcher) {
         return new Validate() {
             @Override
-            public Validate validateThat(Field field, Matcher<? super String> matcher) {
+            public Validate validateThat(DescribableField describableField, Matcher<? super String> matcher) {
                 if (statesMatcher.matches(states)) {
-                    Validator.this.validateThat(field, matcher);
+                    Validator.this.validateThat(describableField, matcher);
                 }
                 return this;
             }
@@ -72,4 +79,5 @@ public class Validator implements Validate {
     public void addStates(Collection<? extends State> states) {
         this.states.addAll(states);
     }
+
 }

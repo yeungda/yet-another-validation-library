@@ -16,13 +16,9 @@
   ~ limitations under the License.
   -->
 
-<project name="yet-another-validation-library-core" default="all">
+<project name="core" default="build">
 
-    <target name="all" depends="bootstrap, clean, dependencies, compile, test, jar"/>
-
-    <target name="build">
-        <echo message="running webcons-backend build target placeholder"/>
-    </target>
+    <target name="build" depends="bootstrap, clean, dependencies, compile, test, jar"/>
 
     <path id="compile.classpath">
         <fileset dir="${basedir}/../lib">

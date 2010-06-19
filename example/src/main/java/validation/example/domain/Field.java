@@ -14,11 +14,12 @@
  * limitations under the License.
  */
 
-package validation.core;
+package validation.example.domain;
 
-import org.hamcrest.Matcher;
+import validation.core.DescribableField;
+import validation.core.FieldDescription;
 
-public class Field {
+public class Field implements DescribableField {
     private final String name;
     private final String value;
 
@@ -27,23 +28,9 @@ public class Field {
         this.value = value;
     }
 
-    public void describeTo(ValidationError validationError) {
-        validationError.setFieldName(name);
-    }
-
-    public void describeTo(ErrorId errorId) {
-        errorId.setFieldName(name);
-    }
-
-    public boolean matches(Matcher<? super String> matcher) {
-        return matcher.matches(value);
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getValue() {
-        return value;
+    @Override
+    public void describeTo(FieldDescription fieldDescription) {
+        fieldDescription.setName(name);
+        fieldDescription.setValue(value);
     }
 }

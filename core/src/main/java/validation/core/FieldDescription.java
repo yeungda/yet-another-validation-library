@@ -18,6 +18,27 @@ package validation.core;
 
 import org.hamcrest.Matcher;
 
-public interface Validate {
-    public Validate validateThat(DescribableField describableField, Matcher<? super String> matcher);
+public class FieldDescription {
+    private String name;
+    private String value;
+
+    public void describeTo(ValidationError validationError) {
+        validationError.setFieldName(name);
+    }
+
+    public void describeTo(ErrorId errorId) {
+        errorId.setFieldName(name);
+    }
+
+    public boolean matches(Matcher<? super String> matcher) {
+        return matcher.matches(value);
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
 }

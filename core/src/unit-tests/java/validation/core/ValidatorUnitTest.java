@@ -133,10 +133,10 @@ public class ValidatorUnitTest {
         };
     }
 
-    private Map<String, String> validating(Field field, Matcher<? super String>... matchers) {
+    private Map<String, String> validating(DescribableField describableField, Matcher<? super String>... matchers) {
         Validator validator = new Validator();
         for (Matcher<? super String> matcher : matchers) {
-            validator.validateThat(field, matcher);
+            validator.validateThat(describableField, matcher);
         }
         return reportOf(validator);
     }
