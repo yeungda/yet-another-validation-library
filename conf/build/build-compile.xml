@@ -32,7 +32,7 @@
                         </classpath>
                     </javac>
                     <copy todir="${basedir}/target/classes/@{folder}">
-                        <fileset dir="${basedir}/src/@{folder}/java" excludes="**/*.java"/>
+                        <fileset dir="${basedir}/src/@{folder}/java"/>
                     </copy>
                 </then>
             </if>
