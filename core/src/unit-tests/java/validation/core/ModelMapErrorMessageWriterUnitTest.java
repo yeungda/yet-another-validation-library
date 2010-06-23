@@ -50,6 +50,5 @@ public class ModelMapErrorMessageWriterUnitTest {
         catch (RuntimeException e) {
             assertThat(e.getMessage(), equalTo("Failed to find property [username.failed.is.invalid]"));
         }
-
     }
 }
