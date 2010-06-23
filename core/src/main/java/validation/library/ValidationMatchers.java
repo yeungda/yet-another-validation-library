@@ -29,11 +29,10 @@ import static org.hamcrest.Matchers.not;
 public class ValidationMatchers {
 
     public static TypeSafeMatcher<String> isMandatory() {
-        final TypeSafeMatcher<String> typeSafeMatcher = afterTrimming(not(equalTo("")));
         return new TypeSafeMatcher<String>() {
             @Override
             public boolean matchesSafely(String s) {
-                return typeSafeMatcher.matches(s);
+                return afterTrimming(not(equalTo(""))).matches(s);
             }
 
             @Override

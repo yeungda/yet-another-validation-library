@@ -16,8 +16,6 @@
 
 package validation.core;
 
-import validation.core.ErrorMessageWriter;
-
 import java.util.Properties;
 
 public class MessageFilteringMessageWriter implements ErrorMessageWriter {
