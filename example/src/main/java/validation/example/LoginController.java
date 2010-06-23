@@ -16,6 +16,7 @@
 
 package validation.example;
 
+import validation.core.ErrorMessageWriter;
 import validation.core.States;
 import validation.core.Validator;
 import validation.example.domain.Login;
@@ -46,10 +47,12 @@ public class LoginController {
         states.describeApplicableTo(validator);
         login.describeTo(validator);
 
-        final ModelMapErrorMessageWriter errorMessageWriter = new ModelMapErrorMessageWriter(properties);
+
+        final ModelMapErrorMessageWriter modelMapErrorMessageWriter = new ModelMapErrorMessageWriter();
+        final ErrorMessageWriter errorMessageWriter = new MessageFilteringMessageWriter(properties, modelMapErrorMessageWriter);
         validator.describeErrorsTo(errorMessageWriter);
         final ArrayList<Map<String, String>> errorMessages = new ArrayList<Map<String, String>>();
-        errorMessageWriter.describeTo(errorMessages);
+        modelMapErrorMessageWriter.describeTo(errorMessages);
         final HashMap hashMap = new HashMap();
         hashMap.put("errors", errorMessages);
         return hashMap;

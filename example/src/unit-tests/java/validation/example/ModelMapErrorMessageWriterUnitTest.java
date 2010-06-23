@@ -33,17 +33,19 @@ public class ModelMapErrorMessageWriterUnitTest {
     public void shouldWriteAnErrorMessageToTheModelMap() {
         final Properties properties = new Properties();
         properties.put("username.failed.is.mandatory", "Please enter your User Name");
-        final ModelMapErrorMessageWriter messageWriter = new ModelMapErrorMessageWriter(properties);
-        messageWriter.write("username", "is mandatory");
+        final ModelMapErrorMessageWriter messageWriter = new ModelMapErrorMessageWriter();
+        final MessageFilteringMessageWriter filteringMessageWriter = new MessageFilteringMessageWriter(properties, messageWriter);
+        filteringMessageWriter.write("username", "is mandatory");
         assertThat(describing(messageWriter).get(0), hasEntry("username", "Please enter your User Name"));
     }
 
     @Test
     public void shouldThrowExceptionWhenUnableToFindProperty() {
         final Properties emptyProperties = new Properties();
-        final ModelMapErrorMessageWriter messageWriter = new ModelMapErrorMessageWriter(emptyProperties);
+        final ModelMapErrorMessageWriter messageWriter = new ModelMapErrorMessageWriter();
+        final MessageFilteringMessageWriter filteringMessageWriter = new MessageFilteringMessageWriter(emptyProperties, messageWriter);
         try {
-            messageWriter.write("username", "is invalid");
+            filteringMessageWriter.write("username", "is invalid");
             fail("expected an exception");
         }
         catch (RuntimeException e) {
