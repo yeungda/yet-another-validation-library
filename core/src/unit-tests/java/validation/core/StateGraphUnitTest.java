@@ -25,9 +25,7 @@ import java.util.ArrayList;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertThat;
-import static validation.core.TestingStates.A;
-import static validation.core.TestingStates.B;
-import static validation.core.TestingStates.C;
+import static validation.core.TestingStates.*;
 
 public class StateGraphUnitTest {
     private States states;
@@ -126,7 +124,7 @@ public class StateGraphUnitTest {
         states.add(A).dependsOn(B).dependsOn(C);
         states.add(B);
         states.add(C);
-        assertThat(resolvingApplicableStatesFor(states), Matchers.<State>containsInAnyOrder(A,B,C));
+        assertThat(resolvingApplicableStatesFor(states), Matchers.<State>containsInAnyOrder(A, B, C));
     }
 
     @Test

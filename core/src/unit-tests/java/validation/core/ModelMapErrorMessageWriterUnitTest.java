@@ -14,13 +14,11 @@
  * limitations under the License.
  */
 
-package validation.example;
+package validation.core;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.HashMap;
 import java.util.Properties;
 
 import static junit.framework.Assert.fail;
@@ -29,21 +27,22 @@ import static org.hamcrest.Matchers.hasEntry;
 import static org.junit.Assert.assertThat;
 
 public class ModelMapErrorMessageWriterUnitTest {
+
     @Test
     public void shouldWriteAnErrorMessageToTheModelMap() {
         final Properties properties = new Properties();
         properties.put("username.failed.is.mandatory", "Please enter your User Name");
-        final ModelMapErrorMessageWriter messageWriter = new ModelMapErrorMessageWriter();
+        final HashMap<String, String> validationErrors = new HashMap<String, String>();
+        final ErrorMessageWriter messageWriter = new MapErrorMessageWriter(validationErrors);
         final MessageFilteringMessageWriter filteringMessageWriter = new MessageFilteringMessageWriter(properties, messageWriter);
         filteringMessageWriter.write("username", "is mandatory");
-        assertThat(describing(messageWriter).get(0), hasEntry("username", "Please enter your User Name"));
+        assertThat(validationErrors, hasEntry("username", "Please enter your User Name"));
     }
 
     @Test
     public void shouldThrowExceptionWhenUnableToFindProperty() {
         final Properties emptyProperties = new Properties();
-        final ModelMapErrorMessageWriter messageWriter = new ModelMapErrorMessageWriter();
-        final MessageFilteringMessageWriter filteringMessageWriter = new MessageFilteringMessageWriter(emptyProperties, messageWriter);
+        final MessageFilteringMessageWriter filteringMessageWriter = new MessageFilteringMessageWriter(emptyProperties, null);
         try {
             filteringMessageWriter.write("username", "is invalid");
             fail("expected an exception");
@@ -52,11 +51,5 @@ public class ModelMapErrorMessageWriterUnitTest {
             assertThat(e.getMessage(), equalTo("Failed to find property [username.failed.is.invalid]"));
         }
 
-    }
-
-    private List<Map<String, String>> describing(ModelMapErrorMessageWriter messageWriter) {
-        final List<Map<String, String>> errorMessages = new ArrayList<Map<String, String>>();
-        messageWriter.describeTo(errorMessages);
-        return errorMessages;
     }
 }

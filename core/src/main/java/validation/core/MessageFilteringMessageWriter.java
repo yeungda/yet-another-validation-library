@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package validation.example;
+package validation.core;
 
 import validation.core.ErrorMessageWriter;
 

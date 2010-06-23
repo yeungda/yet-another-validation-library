@@ -17,6 +17,7 @@
 package validation.example;
 
 import validation.core.ErrorMessageWriter;
+import validation.core.MessageFilteringMessageWriter;
 import validation.core.States;
 import validation.core.Validator;
 import validation.example.domain.Login;
