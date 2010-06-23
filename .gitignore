@@ -2,3 +2,4 @@ core/target/
 example/target/
 out/
 .DS_Store
+.idea/workspace.xml
